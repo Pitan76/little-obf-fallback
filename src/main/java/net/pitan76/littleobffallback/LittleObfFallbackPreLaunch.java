@@ -20,31 +20,39 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
             public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
                 // mod class only
                 if (className == null ||
-                    className.startsWith("java/") ||
-                    className.startsWith("jdk/") ||
-                    className.startsWith("sun/") ||
-                    className.startsWith("net/minecraft/") ||
-                    className.startsWith("net/fabricmc/") ||
-                    className.startsWith("com/llamalad7/") ||
-                    className.startsWith("org/spongepowered/asm/") ||
-                    className.startsWith("org/objectweb/asm/") ||
-                    className.startsWith("net/bytebuddy/") ||
-                    className.startsWith("net/pitan76/littleobffallback/") ||
-                    className.startsWith("net/pitan76/mcpitanlib/") ||
-                    className.startsWith("org/apache/logging/")
+                        !className.startsWith("net/pitan76/smallstairs/")
+//                    className.startsWith("java/") ||
+//                    className.startsWith("jdk/") ||
+//                    className.startsWith("sun/") ||
+//                    className.startsWith("com/sun/") ||
+//                    className.startsWith("com/ibm/") ||
+//                    className.startsWith("net/minecraft/") ||
+//                    className.startsWith("com/mojang/") ||
+//                    className.startsWith("net/fabricmc/") ||
+//                    className.startsWith("com/llamalad7/") ||
+//                    className.startsWith("org/spongepowered/asm/") ||
+//                    className.startsWith("org/objectweb/asm/") ||
+//                    className.startsWith("net/bytebuddy/") ||
+//                    className.startsWith("net/pitan76/littleobffallback/") ||
+//                    className.startsWith("net/pitan76/mcpitanlib/") ||
+//                    className.startsWith("joptsimple/") ||
+//                    className.startsWith("org/apache/") ||
+//                    className.startsWith("com/google/") ||
+//                    className.startsWith("org/slf4j/") ||
+//                    className.startsWith("org/lwjgl/")
                 ) {
                     return null;
                 }
 
                 ClassReader cr = new ClassReader(classfileBuffer);
-                ClassWriter cw = new ClassWriter(cr, 0);
+//                ClassWriter cw = new ClassWriter(cr, 0);
 
-//                ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES) {
-//                    @Override
-//                    protected String getCommonSuperClass(String type1, String type2) {
-//                        return "java/lang/Object";
-//                    }
-//                };
+                ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES) {
+                    @Override
+                    protected String getCommonSuperClass(String type1, String type2) {
+                        return "java/lang/Object";
+                    }
+                };
 
                 ClassVisitor cv = new ClassVisitor(Opcodes.ASM9, cw) {
 
@@ -108,7 +116,16 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
                                 if (descriptor.contains("Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)") ||
                                         descriptor.contains("Lnet/minecraft/class_2251;)")) {
 
-                                    super.visitMethodInsn(Opcodes.INVOKESTATIC, "net/pitan76/littleobffallback/LittleObfFallbackPreLaunch", "unwrapSettings", "(Ljava/lang/Object;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;", false);
+                                    boolean isShapeMethod = name.equals("getShape") || name.equals("getOutlineShape") || name.equals("getCollisionShape");
+                                    boolean isInternalCall = owner.startsWith("net/pitan76/mcpitanlib/") || owner.startsWith("net/minecraft/");
+
+                                    if (!isShapeMethod && !isInternalCall) {
+                                        super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                                                "net/pitan76/littleobffallback/LittleObfFallbackPreLaunch",
+                                                "unwrapSettings",
+                                                "(Ljava/lang/Object;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;",
+                                                false);
+                                    }
                                 }
 
                                 super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
