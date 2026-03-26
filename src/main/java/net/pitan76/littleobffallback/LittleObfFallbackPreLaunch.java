@@ -42,8 +42,6 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
 //                ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES) {
 //                    @Override
 //                    protected String getCommonSuperClass(String type1, String type2) {
-//                        // ※COMPUTE_FRAMES は裏でクラスロードを走らせるため、エージェント内でデッドロックを起こす危険があります。
-//                        // これを Object に誤魔化すことで、安全にフレーム計算を通過させます。
 //                        return "java/lang/Object";
 //                    }
 //                };
@@ -63,7 +61,7 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
                                         // Replace the obfuscated class reference with the real class reference in the method descriptor
                                         String fixedDescriptor = descriptor.replace(
                                                 "Lnet/minecraft/class_4970;",
-                                                "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+                                                "Lnet/minecraft/world/level/block/state/BlockBehaviour;"
                                         );
 
                                         // Force cast class_4970 to BlockBehaviour when it's used as a method argument or return type
