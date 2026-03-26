@@ -17,9 +17,6 @@
       "net.pitan76.littleobffallback.LittleObfFallback"
     ]
   },
-  "languageAdapters": {
-    "littleobffallback_hook": "net.pitan76.littleobffallback.LanguageAdapterHook"
-  },
   "mixins": [
     "littleobffallback.mixins.json"
   ],

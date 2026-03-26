@@ -12,6 +12,19 @@ base {
 
 loom {
     accessWidenerPath = file("src/main/resources/littleobffallback.accesswidener")
+    runs {
+        client {
+            client()
+            configName = "Minecraft Client"
+            // 自分のプロジェクトのクラスパスを明示的に追加する
+            property "fabric.classPathGroups", "littleobffallback"
+        }
+        server {
+            server()
+            configName = "Minecraft Server"
+            property "fabric.classPathGroups", "littleobffallback"
+        }
+    }
 }
 
 repositories {
