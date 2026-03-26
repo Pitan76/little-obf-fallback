@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "littleobffallback",
+  "version": "${version}",
+  "name": "LittleObfFallback",
+  "description": "An obfuscation fallback layer",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/littleobffallback/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.pitan76.littleobffallback.client.LittleObfFallbackClient"
+    ],
+    "main": [
+      "net.pitan76.littleobffallback.LittleObfFallback"
+    ]
+  },
+  "accessWidener": "littleobffallback.accesswidener",
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
