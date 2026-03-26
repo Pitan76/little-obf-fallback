@@ -10,6 +10,9 @@
   "icon": "assets/littleobffallback/icon.png",
   "environment": "*",
   "entrypoints": {
+    "preLaunch": [
+      "net.pitan76.littleobffallback.LittleObfFallbackPreLaunch"
+    ],
     "client": [
       "net.pitan76.littleobffallback.client.LittleObfFallbackClient"
     ],
