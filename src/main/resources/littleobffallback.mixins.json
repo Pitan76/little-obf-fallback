@@ -9,7 +9,6 @@
     "BlockItemMixin",
     "BlockMixin",
     "BlockPosMixin",
-    "BlocksMixin",
     "BlockStateMixin",
     "ComponentMixin",
     "ContainerMixin",

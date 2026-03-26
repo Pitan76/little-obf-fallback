@@ -20,19 +20,70 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
             public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
                 // mod class only
                 if (className == null ||
-                        className.startsWith("java/") ||
-                        className.startsWith("net/minecraft/") ||
-                        className.startsWith("net/fabricmc/") ||
-                        className.startsWith("org/spongepowered/asm/"))
+                    className.startsWith("java/") ||
+                    className.startsWith("jdk/") ||
+                    className.startsWith("sun/") ||
+                    className.startsWith("net/minecraft/") ||
+                    className.startsWith("net/fabricmc/") ||
+                    className.startsWith("com/llamalad7/") ||
+                    className.startsWith("org/spongepowered/asm/") ||
+                    className.startsWith("org/objectweb/asm/") ||
+                    className.startsWith("net/bytebuddy/") ||
+                    className.startsWith("net/pitan76/littleobffallback/") ||
+                    className.startsWith("net/pitan76/mcpitanlib/") ||
+                    className.startsWith("org/apache/logging/")
+                ) {
                     return null;
+                }
 
                 ClassReader cr = new ClassReader(classfileBuffer);
                 ClassWriter cw = new ClassWriter(cr, 0);
+
+//                ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES) {
+//                    @Override
+//                    protected String getCommonSuperClass(String type1, String type2) {
+//                        // ※COMPUTE_FRAMES は裏でクラスロードを走らせるため、エージェント内でデッドロックを起こす危険があります。
+//                        // これを Object に誤魔化すことで、安全にフレーム計算を通過させます。
+//                        return "java/lang/Object";
+//                    }
+//                };
+
                 ClassVisitor cv = new ClassVisitor(Opcodes.ASM9, cw) {
                     @Override
                     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
                         MethodVisitor mv = super.visitMethod(access, name, descriptor, signature, exceptions);
                         return new MethodVisitor(Opcodes.ASM9, mv) {
+
+                            @Override
+                            public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
+
+                                // MCPitanLib CompatibleBlockSettings.copy()
+                                if (owner.equals("net/pitan76/mcpitanlib/api/block/v2/CompatibleBlockSettings") && name.equals("copy")) {
+                                    if (descriptor.contains("Lnet/minecraft/class_4970;")) {
+                                        // Replace the obfuscated class reference with the real class reference in the method descriptor
+                                        String fixedDescriptor = descriptor.replace(
+                                                "Lnet/minecraft/class_4970;",
+                                                "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+                                        );
+
+                                        // Force cast class_4970 to BlockBehaviour when it's used as a method argument or return type
+                                        super.visitTypeInsn(Opcodes.CHECKCAST, "net/minecraft/world/level/block/state/BlockBehaviour");
+                                        super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
+
+                                        System.out.println("[LittleObfFallback] ASM Patched Method Descriptor: " + owner + "." + name + " -> " + fixedDescriptor);
+                                        return;
+                                    }
+                                }
+
+                                if (descriptor.contains("Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)") ||
+                                        descriptor.contains("Lnet/minecraft/class_2251;)")) {
+
+                                    super.visitMethodInsn(Opcodes.INVOKESTATIC, "net/pitan76/littleobffallback/LittleObfFallbackPreLaunch", "unwrapSettings", "(Ljava/lang/Object;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;", false);
+                                }
+
+                                super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
+                            }
+
                             @Override
                             public void visitFieldInsn(int opcode, String owner, String fieldName, String desc) {
                                 // class_2350 (Direction)
@@ -109,8 +160,7 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
                                     if (realBlock != null) {
                                         // Replace the obfuscated field access with the real field name
                                         super.visitFieldInsn(Opcodes.GETSTATIC, "net/minecraft/world/level/block/Blocks", realBlock, "Lnet/minecraft/world/level/block/Block;");
-
-//                                        super.visitTypeInsn(Opcodes.CHECKCAST, "net/minecraft/class_2248");
+                                        super.visitTypeInsn(Opcodes.CHECKCAST, "net/minecraft/class_2248");
                                         return;
                                     }
                                 }
@@ -127,5 +177,20 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
         });
 
         System.out.println("[LittleObfFallback] Global ASM Transformer injected successfully.");
+    }
+
+    public static net.minecraft.world.level.block.state.BlockBehaviour.Properties unwrapSettings(Object obj) {
+        // すでに Properties ならそのまま返す
+        if (obj instanceof net.minecraft.world.level.block.state.BlockBehaviour.Properties) {
+            return (net.minecraft.world.level.block.state.BlockBehaviour.Properties) obj;
+        }
+        try {
+            // CompatibleBlockSettings の .build() をリフレクションで叩いて変換する
+            java.lang.reflect.Method m = obj.getClass().getMethod("build");
+            return (net.minecraft.world.level.block.state.BlockBehaviour.Properties) m.invoke(obj);
+        } catch (Exception e) {
+            System.err.println("[LittleObfFallback] Failed to unwrap settings: " + e.getMessage());
+            return (net.minecraft.world.level.block.state.BlockBehaviour.Properties) obj;
+        }
     }
 }
