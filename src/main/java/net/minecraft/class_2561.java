@@ -9,25 +9,29 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 // Component (Text)
-public interface class_2561 extends Component {
+public interface class_2561 {
+    default Component asComponent() {
+        return (Component) (Object) this;
+    }
+    
     default Style method_10866() {
-        return this.getStyle();
+        return asComponent().getStyle();
     }
 
     default ComponentContents method_10851() {
-        return this.getContents(); // getContent()
+        return asComponent().getContents(); // getContent()
     }
 
     default String method_10858(int length) {
-        return this.getString(length);
+        return asComponent().getString(length);
     }
 
     default List<Component> method_10855() {
-        return this.getSiblings();
+        return asComponent().getSiblings();
     }
 
     default boolean method_44745(Component text) {
-        return this.contains(text);
+        return asComponent().contains(text);
     }
 
     static Component method_30163(@Nullable String string) {

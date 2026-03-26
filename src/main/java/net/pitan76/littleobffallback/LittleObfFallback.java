@@ -6,5 +6,6 @@ public class LittleObfFallback implements ModInitializer {
 
     @Override
     public void onInitialize() {
+
     }
 }
