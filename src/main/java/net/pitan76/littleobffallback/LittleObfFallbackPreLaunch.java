@@ -20,26 +20,11 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
             public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
                 // mod class only
                 if (className == null ||
-                        !className.startsWith("net/pitan76/smallstairs/")
-//                    className.startsWith("java/") ||
-//                    className.startsWith("jdk/") ||
-//                    className.startsWith("sun/") ||
-//                    className.startsWith("com/sun/") ||
-//                    className.startsWith("com/ibm/") ||
-//                    className.startsWith("net/minecraft/") ||
-//                    className.startsWith("com/mojang/") ||
-//                    className.startsWith("net/fabricmc/") ||
-//                    className.startsWith("com/llamalad7/") ||
-//                    className.startsWith("org/spongepowered/asm/") ||
-//                    className.startsWith("org/objectweb/asm/") ||
-//                    className.startsWith("net/bytebuddy/") ||
-//                    className.startsWith("net/pitan76/littleobffallback/") ||
-//                    className.startsWith("net/pitan76/mcpitanlib/") ||
-//                    className.startsWith("joptsimple/") ||
-//                    className.startsWith("org/apache/") ||
-//                    className.startsWith("com/google/") ||
-//                    className.startsWith("org/slf4j/") ||
-//                    className.startsWith("org/lwjgl/")
+                        !className.startsWith("net/pitan76/") ||
+                        className.startsWith("net/pitan76/littleobffallback/") ||
+                        className.startsWith("net/pitan76/compatdatapacks76/") ||
+                        className.startsWith("net/pitan76/legacyitemmodels/") ||
+                        className.startsWith("net/pitan76/mcpitanlib/")
                 ) {
                     return null;
                 }
@@ -76,6 +61,16 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
 
                             @Override
                             public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
+                                if (!className.startsWith("net/pitan76/") ||
+                                        className.startsWith("net/pitan76/littleobffallback/") ||
+                                        className.startsWith("net/pitan76/compatdatapacks76/") ||
+                                        className.startsWith("net/pitan76/legacyitemmodels/") ||
+                                        className.startsWith("net/pitan76/mcpitanlib/")
+                                ) {
+                                    super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
+                                    return;
+                                }
+
 
                                 // class_2246 -> Blocks
                                 if (owner.equals("net/minecraft/class_2246"))
