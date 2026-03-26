@@ -3,64 +3,50 @@ package net.minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
 
 // ItemStack
-public class class_1799 extends ItemStack {
-
-    public class_1799(ItemLike item, int count) {
-        super(item, count);
+public interface class_1799 {
+    default ItemStack asStack() {
+        return (ItemStack) this;
     }
 
-    public class_1799(class_1935 item, int count) {
-        super(item, count);
+    default Item method_7909() {
+        return asStack().getItem();
     }
 
-    public class_1799(ItemLike item) {
-        super(item);
+    default int method_7947() {
+        return asStack().getCount();
     }
 
-    public class_1799(class_1935 item) {
-        super(item);
+    default int method_7914() {
+        return asStack().getMaxStackSize();
     }
 
-    public Item method_7909() {
-        return super.getItem();
+    default int method_7936() {
+        return asStack().getMaxDamage();
     }
 
-    public int method_7947() {
-        return super.getCount();
+    default Component method_7964() {
+        return asStack().getDisplayName();
     }
 
-    public int method_7914() {
-        return super.getMaxStackSize();
+    default int method_7919() {
+        return asStack().getDamageValue();
     }
 
-    public int method_7936() {
-        return super.getMaxDamage();
+    default void method_7933(int amount) {
+        asStack().grow(amount);
     }
 
-    public Component method_7964() {
-        return super.getDisplayName();
+    default void method_7934(int amount) {
+        asStack().shrink(amount);
     }
 
-    public int method_7919() {
-        return super.getDamageValue();
+    default void method_7939(int count) {
+        asStack().setCount(count);
     }
 
-    public void method_7933(int amount) {
-        super.grow(amount); // increment
-    }
-
-    public void method_7934(int amount) {
-        super.shrink(amount); // decrement
-    }
-
-    public void method_7939(int count) {
-        super.setCount(count);
-    }
-
-    public void method_7974(int damage) {
-        super.setDamageValue(damage);
+    default void method_7974(int damage) {
+        asStack().setDamageValue(damage);
     }
 }

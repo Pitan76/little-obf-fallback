@@ -7,44 +7,37 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 
 // Block
-public class class_2248 extends Block {
-    public class_2248(Properties properties) {
-        super(properties);
+public interface class_2248 {
+
+    default Block asBlock() {
+        return (Block) (Object) this;
     }
 
-    public class_2248(class_4970.class_2251 properties) {
-        super(properties);
+    default Item method_8389() {
+        return asBlock().asItem();
     }
 
-    // BlockBehavior (AbstractBlock)
-
-    public Item method_8389() {
-        return asItem();
-    }
-
-    public Block method_26160() {
+    default Block method_26160() {
         return asBlock();
     }
 
-    protected FluidState method_9545(BlockState state) {
-        return super.getFluidState(state);
+    default FluidState method_9545(BlockState state) {
+        return asBlock().getFluidState(state);
     }
 
-    protected FluidState method_9545(class_2680 state) {
-        return super.getFluidState(state);
+    default FluidState method_9545(class_2680 state) {
+        return asBlock().getFluidState((BlockState) (Object) state);
     }
 
-    public float method_36555() {
-        return super.defaultDestroyTime(); // getHardness()
+    default float method_36555() {
+        return asBlock().defaultDestroyTime();
     }
 
-    // ----
-
-    public MutableComponent method_9518() {
-        return super.getName();
+    default MutableComponent method_9518() {
+        return asBlock().getName();
     }
 
-    public final BlockState method_9564() {
-        return this.defaultBlockState();
+    default BlockState method_9564() {
+        return asBlock().defaultBlockState();
     }
 }

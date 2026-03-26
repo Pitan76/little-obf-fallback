@@ -17,6 +17,12 @@
       "net.pitan76.littleobffallback.LittleObfFallback"
     ]
   },
+  "languageAdapters": {
+    "littleobffallback_hook": "net.fabricmc.fabric.api.language.JavaLanguageAdapter"
+  },
+  "mixins": [
+    "littleobffallback.mixins.json"
+  ],
   "accessWidener": "littleobffallback.accesswidener",
   "depends": {
     "fabricloader": ">=${loader_version}",
