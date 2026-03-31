@@ -7,9 +7,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
@@ -99,8 +102,15 @@ public class MappingRegistry {
         addClass("net/minecraft/class_2382", Vec3i.class);
         addClass("net/minecraft/class_2397", LeavesBlock.class);
         addClass("net/minecraft/class_2680", BlockState.class);
+        addClass("net/minecraft/class_4970$class_4971", BlockBehaviour.BlockStateBase.class);
+        addClass("net/minecraft/class_1792", Item.class);
+        addClass("net/minecraft/class_1747", BlockItem.class);
+        addClass("net/minecraft/class_1793", Item.Properties.class);
 
-        addMethod("net/minecraft/class_1792", "method_7909", "getItem");
+        addMethod("net/minecraft/class_1799", "method_7909", "getItem");
+        addMethod("net/minecraft/class_1792", "method_7854", "getDefaultInstance");
+        addMethod("net/minecraft/class_1792", "method_7882", "getDefaultMaxStackSize");
+        addMethod("net/minecraft/class_4970$class_4971", "method_26204", "getBlock");
 
         addField("net/minecraft/class_2246", "field_10124", "AIR");
         addField("net/minecraft/class_2246", "field_10340", "STONE");
