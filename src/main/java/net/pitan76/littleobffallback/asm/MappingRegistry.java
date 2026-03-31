@@ -17,6 +17,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -138,6 +139,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_827", BlockEntityRenderer.class);
         addClass("net/minecraft/class_1263", Container.class);
         addClass("net/minecraft/class_1661", Inventory.class);
+        addClass("net/minecraft/class_1735", Slot.class);
 
         addMethod("net/minecraft/class_1799", "method_7909", "getItem");
         addMethod("net/minecraft/class_1792", "method_7854", "getDefaultInstance");
@@ -160,6 +162,9 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1263", "method_5448", "clearContent");
         addMethod("net/minecraft/class_1263", "method_18861", "countItem");
         addMethod("net/minecraft/class_1263", "method_5437", "canPlaceItem");
+        addMethod("net/minecraft/class_1735", "method_53512", "set");
+        addMethod("net/minecraft/class_1735", "method_7677", "getItem");
+        addMethod("net/minecraft/class_1735", "method_7680", "mayPlace");
 
         // Items
         addField("net/minecraft/class_2246", "field_10124", "AIR");

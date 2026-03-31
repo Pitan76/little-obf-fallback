@@ -21,7 +21,6 @@
     "MutableComponentMixin",
     "NonNullListMixin",
     "PropertyMixin",
-    "SlotMixin",
     "Vec3iMixin"
   ],
   "client": [
