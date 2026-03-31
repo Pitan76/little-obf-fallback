@@ -161,6 +161,7 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1263", "method_18861", "countItem");
         addMethod("net/minecraft/class_1263", "method_5437", "canPlaceItem");
 
+        // Items
         addField("net/minecraft/class_2246", "field_10124", "AIR");
         addField("net/minecraft/class_2246", "field_10340", "STONE");
         addField("net/minecraft/class_2246", "field_10474", "GRANITE");
@@ -211,6 +212,7 @@ public class MappingRegistry {
         addField("net/minecraft/class_2246", "field_10153", "QUARTZ_BLOCK");
         addField("net/minecraft/class_2246", "field_10286", "PURPUR_BLOCK");
 
+        // Blocks
         addField("net/minecraft/class_1802", "field_8162", "AIR");
         addField("net/minecraft/class_1802", "field_20390", "BRICKS");
         addField("net/minecraft/class_1802", "field_8342", "BRICK_SLAB");
