@@ -1,5 +1,6 @@
 package net.pitan76.littleobffallback.transformer;
 
+import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 
 import java.util.Objects;
@@ -72,17 +73,13 @@ public class MethodFallbackVisitor extends MethodVisitor {
 
     @Override
     public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
-        boolean shouldRemap = 
-            (owner != null && owner.contains("class_")) ||
-            (name != null && name.contains("method_")) ||
-            (descriptor != null && descriptor.contains("class_"));
-        String newOwner = shouldRemap ? remapClass(owner) : owner;
-        String newName = shouldRemap ? remapMethod(name) : name;
-        String newDesc = shouldRemap ? remapType(descriptor) : descriptor;
-        boolean changed = !java.util.Objects.equals(owner, newOwner) || !java.util.Objects.equals(name, newName) || !java.util.Objects.equals(descriptor, newDesc);
+        String newOwner = (owner != null && owner.contains("class_")) ? remapClass(owner) : owner;
+        String newName = (name != null && name.contains("method_")) ? remapMethod(name) : name;
+        String newDesc = (descriptor != null && descriptor.contains("class_")) ? remapType(descriptor) : descriptor;
+        boolean changed = !Objects.equals(owner, newOwner) || !Objects.equals(name, newName) || !Objects.equals(descriptor, newDesc);
         if (changed) {
-            System.out.println("[LittleObfFallback] visitMethodInsn: " + owner + "." + name + " : " + descriptor +
-                    " => " + newOwner + "." + newName + " : " + newDesc);
+            System.out.println("[LittleObfFallback] visitMethodInsn: " + owner + "." + name + " => " +
+                    " => " + newOwner + "." + newName + ", desc: " + descriptor + " => " + newDesc);
         }
         super.visitMethodInsn(opcode, newOwner, newName, newDesc, isInterface);
     }
@@ -100,20 +97,15 @@ public class MethodFallbackVisitor extends MethodVisitor {
     }
 
     @Override
-    public void visitLocalVariable(String name, String desc, String signature, org.objectweb.asm.Label start, org.objectweb.asm.Label end, int index) {
-//        String newDesc = (desc != null && desc.contains("class_")) ? remapType(desc) : desc;
-//        String newSig = (signature != null && signature.contains("class_")) ? remapType(signature) : signature;
-//        if (!java.util.Objects.equals(desc, newDesc) || !java.util.Objects.equals(signature, newSig)) {
-//            System.out.println("[LittleObfFallback] visitLocalVariable: " + name + " : " + desc + ", " + signature + " => " + newDesc + ", " + newSig);
-//        }
-//        super.visitLocalVariable(name, newDesc, newSig, start, end, index);
-        if (desc == null || !desc.contains("class_")) {
+    public void visitLocalVariable(String name, String desc, String signature, Label start, Label end, int index) {
+        if ((desc == null || !desc.contains("class_")) && (signature == null || !signature.contains("class_"))) {
             super.visitLocalVariable(name, desc, signature, start, end, index);
             return;
         }
 
         String newDesc = remapType(desc);
-        System.out.println("[LittleObfFallback] visitLocalVariable: " + name + " : " + desc + " => " + newDesc);
-        super.visitLocalVariable(name, newDesc, signature, start, end, index);
+        String newSig = remapType(signature);
+        System.out.println("[LittleObfFallback] visitLocalVariable: " + name + " : " + desc + " => " + newDesc + ", signature: " + signature + " => " + newSig);
+        super.visitLocalVariable(name, newDesc, newSig, start, end, index);
     }
 }

@@ -11,7 +11,10 @@ import java.security.ProtectionDomain;
 public class ClassFileTransformerImpl implements ClassFileTransformer {
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
-        if (className == null || className.startsWith("net/pitan76/littleobffallback/")) {
+        if (className == null
+                || className.startsWith("net/pitan76/littleobffallback/")
+                || className.startsWith("net/minecraft/")
+        ) {
             return null;
         }
 //                System.out.println("[LittleObfFallback] Transforming: " + className);

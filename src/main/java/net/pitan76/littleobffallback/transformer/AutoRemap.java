@@ -1,5 +1,8 @@
 package net.pitan76.littleobffallback.transformer;
 
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
+
 public class AutoRemap {
     // Intermediary名やフィールド名を公式名に変換する簡易リマップ
     public static String autoRemapClass(String name) {
@@ -11,13 +14,23 @@ public class AutoRemap {
             case "net/minecraft/class_2246" -> "net/minecraft/world/level/block/Blocks";
             case "net/minecraft/class_2248" -> "net/minecraft/world/level/block/Block";
             case "net/minecraft/class_4970" -> "net/minecraft/world/level/block/state/BlockBehaviour";
-            case "net/minecraft/class_4970$class_2251" ->
-                    "net/minecraft/world/level/block/state/BlockBehaviour$Properties";
+            case "net/minecraft/class_4970$class_2251" -> "net/minecraft/world/level/block/state/BlockBehaviour$Properties";
             case "net/minecraft/class_2350" -> "net/minecraft/core/Direction";
             case "net/minecraft/class_1799" -> "net/minecraft/world/item/ItemStack";
+            case "net/minecraft/class_2769" -> simplifiedDesc(Property.class.descriptorString());
+            case "net/minecraft/class_2680" -> simplifiedDesc(BlockState.class.descriptorString());
             default -> name;
         };
+    }
 
+    /**
+     * L...; 形式のクラス名を簡易的に変換
+     */
+    public static String simplifiedDesc(String name) {
+        if (name.startsWith("L") && name.endsWith(";")) {
+            return name.substring(1, name.length() - 1);
+        }
+        return name;
     }
 
     public static String autoRemapField(String name) {

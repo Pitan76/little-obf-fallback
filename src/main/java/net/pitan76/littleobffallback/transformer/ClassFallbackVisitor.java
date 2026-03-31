@@ -17,33 +17,33 @@ public class ClassFallbackVisitor extends ClassVisitor {
     @Override
     public FieldVisitor visitField(int access, String name, String descriptor, String signature, Object value) {
         String newDesc = descriptor;
-//        String newSig = signature;
+        String newSig = signature;
         if (descriptor != null && (descriptor.contains("class_") || descriptor.contains("field_") || descriptor.contains("method_"))) {
             newDesc = remapType(descriptor);
         }
-//        if (signature != null && signature.contains("class_")) {
-//            newSig = remapType(signature);
-//        }
+        if (signature != null && signature.contains("class_")) {
+            newSig = remapType(signature);
+        }
         if (!java.util.Objects.equals(descriptor, newDesc)) {
             System.out.println("[LittleObfFallback] visitField(def): " + name + " : " + descriptor + " => " + newDesc);
         }
-        return super.visitField(access, name, newDesc, signature, value);
+        return super.visitField(access, name, newDesc, newSig, value);
     }
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
         String newDesc = descriptor;
-//        String newSig = signature;
+        String newSig = signature;
         if (descriptor != null && descriptor.contains("class_")) {
             newDesc = remapType(descriptor);
         }
-//        if (signature != null && signature.contains("class_")) {
-//            newSig = remapType(signature);
-//        }
-        if (!Objects.equals(descriptor, newDesc)) {
-            System.out.println("[LittleObfFallback] visitMethod(def): " + name + " : " + descriptor + " => " + newDesc);
+        if (signature != null && signature.contains("class_")) {
+            newSig = remapType(signature);
         }
-        MethodVisitor mv = super.visitMethod(access, name, newDesc, signature, exceptions);
+        if (!Objects.equals(descriptor, newDesc)) {
+            System.out.println("[LittleObfFallback] visitMethod(def): " + name + " : " + descriptor + " => " + newDesc + ", sig: " + signature + " => " + newSig);
+        }
+        MethodVisitor mv = super.visitMethod(access, name, newDesc, newSig, exceptions);
         return new MethodFallbackVisitor(api, mv, className);
     }
 
