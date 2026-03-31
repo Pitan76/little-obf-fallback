@@ -2,18 +2,27 @@ package net.pitan76.littleobffallback.transformer;
 
 public class AutoRemap {
     // Intermediary名やフィールド名を公式名に変換する簡易リマップ
-    public static String autoRemap(String name) {
-        System.out.println("[LittleObfFallback] autoRemap: " + name);
+    public static String autoRemapClass(String name) {
+        System.out.println("[LittleObfFallback] autoRemapClass: " + name);
 
-        if (name == null) return null;
-        if (name.equals("net/minecraft/class_1297")) return "net/minecraft/world/entity/Entity";
-        if (name.equals("net/minecraft/class_1309")) return "net/minecraft/world/entity/LivingEntity";
-        if (name.equals("net/minecraft/class_2246")) return "net/minecraft/world/level/block/Blocks";
-        if (name.equals("net/minecraft/class_2248")) return "net/minecraft/world/level/block/Block";
-        if (name.equals("net/minecraft/class_4970")) return "net/minecraft/world/level/block/state/BlockBehaviour";
-        if (name.equals("net/minecraft/class_4970$class_2251")) return "net/minecraft/world/level/block/state/BlockBehaviour$Properties";
-        if (name.equals("net/minecraft/class_2350")) return "net/minecraft/core/Direction";
-        if (name.equals("net/minecraft/class_1799")) return "net/minecraft/world/item/ItemStack";
+        return switch (name) {
+            case "net/minecraft/class_1297" -> "net/minecraft/world/entity/Entity";
+            case "net/minecraft/class_1309" -> "net/minecraft/world/entity/LivingEntity";
+            case "net/minecraft/class_2246" -> "net/minecraft/world/level/block/Blocks";
+            case "net/minecraft/class_2248" -> "net/minecraft/world/level/block/Block";
+            case "net/minecraft/class_4970" -> "net/minecraft/world/level/block/state/BlockBehaviour";
+            case "net/minecraft/class_4970$class_2251" ->
+                    "net/minecraft/world/level/block/state/BlockBehaviour$Properties";
+            case "net/minecraft/class_2350" -> "net/minecraft/core/Direction";
+            case "net/minecraft/class_1799" -> "net/minecraft/world/item/ItemStack";
+            default -> name;
+        };
+
+    }
+
+    public static String autoRemapField(String name) {
+        System .out.println("[LittleObfFallback] autoRemapField: " + name);
+
         switch (name) {
             case "field_11043": return "NORTH";
             case "field_11035": return "SOUTH";
@@ -71,6 +80,7 @@ public class AutoRemap {
         if (name.contains("field_10146")) return name.replace("field_10146", "BLACK_WOOL");
         if (name.contains("field_10153")) return name.replace("field_10153", "QUARTZ_BLOCK");
         if (name.contains("field_10286")) return name.replace("field_10286", "PURPUR_BLOCK");
+
         return name;
     }
 }
