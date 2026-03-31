@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
@@ -107,6 +108,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_2586", BlockEntity.class);
         addClass("net/minecraft/class_2591", BlockEntityType.class);
         addClass("net/minecraft/class_1703", AbstractContainerMenu.class);
+        addClass("net/minecraft/class_3917", MenuType.class);
         addClass("net/minecraft/class_2338", BlockPos.class);
         addClass("net/minecraft/class_2382", Vec3i.class);
         addClass("net/minecraft/class_2397", LeavesBlock.class);
