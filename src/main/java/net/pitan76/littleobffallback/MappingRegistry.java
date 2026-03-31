@@ -11,6 +11,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -106,6 +107,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_1792", Item.class);
         addClass("net/minecraft/class_1747", BlockItem.class);
         addClass("net/minecraft/class_1793", Item.Properties.class);
+        addClass("net/minecraft/class_3737", SimpleWaterloggedBlock.class);
 
         addMethod("net/minecraft/class_1799", "method_7909", "getItem");
         addMethod("net/minecraft/class_1792", "method_7854", "getDefaultInstance");
@@ -161,5 +163,12 @@ public class MappingRegistry {
         addField("net/minecraft/class_2246", "field_10146", "BLACK_WOOL");
         addField("net/minecraft/class_2246", "field_10153", "QUARTZ_BLOCK");
         addField("net/minecraft/class_2246", "field_10286", "PURPUR_BLOCK");
+
+        addField("net/minecraft/class_2350", "field_11033", "DOWN");
+        addField("net/minecraft/class_2350", "field_11036", "UP");
+        addField("net/minecraft/class_2350", "field_11043", "NORTH");
+        addField("net/minecraft/class_2350", "field_11035", "SOUTH");
+        addField("net/minecraft/class_2350", "field_11039", "WEST");
+        addField("net/minecraft/class_2350", "field_11034", "EAST");
     }
 }

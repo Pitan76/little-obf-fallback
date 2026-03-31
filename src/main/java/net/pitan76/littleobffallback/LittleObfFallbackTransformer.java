@@ -17,7 +17,13 @@ public class LittleObfFallbackTransformer implements ClassFileTransformer {
 
         // システムクラスやライブラリ群は変換対象から除外して高速化
         if (className.startsWith("java/") || className.startsWith("sun/") || 
-            className.startsWith("jdk/") || className.startsWith("org/objectweb/asm/")) {
+            className.startsWith("jdk/") || className.startsWith("org/objectweb/asm/") ||
+            className.startsWith("net/minecraft/") || className.startsWith("net/pitan76/littleobffallback/") ||
+            className.startsWith("com/google/") || className.startsWith("org/apache/") ||
+            className.startsWith("org/spongepowered/") || className.startsWith("org/slf4j/") ||
+            className.startsWith("org/log4j/") || className.startsWith("org/jetbrains/") ||
+            className.startsWith("org/gradle/") || className.startsWith("org/fabricmc/") ||
+            className.startsWith("net/pitan76/mcpitanlib/")) {
             return null;
         }
 
