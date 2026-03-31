@@ -4,18 +4,23 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -89,6 +94,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_1657", Player.class);
         addClass("net/minecraft/class_1297", Entity.class);
         addClass("net/minecraft/class_1542", ItemEntity.class);
+        addClass("net/minecraft/class_1303", ExperienceOrb.class);
         addClass("net/minecraft/class_2246", "net/minecraft/world/level/block/Blocks");
         addClass("net/minecraft/class_2248", "net/minecraft/world/level/block/Block");
         addClass("net/minecraft/class_2350", "net/minecraft/core/Direction");
@@ -99,6 +105,8 @@ public class MappingRegistry {
         addClass("net/minecraft/class_3218", ServerLevel.class);
         addClass("net/minecraft/class_1937", Level.class);
         addClass("net/minecraft/class_2586", BlockEntity.class);
+        addClass("net/minecraft/class_2591", BlockEntityType.class);
+        addClass("net/minecraft/class_1703", AbstractContainerMenu.class);
         addClass("net/minecraft/class_2338", BlockPos.class);
         addClass("net/minecraft/class_2382", Vec3i.class);
         addClass("net/minecraft/class_2397", LeavesBlock.class);
@@ -108,11 +116,17 @@ public class MappingRegistry {
         addClass("net/minecraft/class_1747", BlockItem.class);
         addClass("net/minecraft/class_1793", Item.Properties.class);
         addClass("net/minecraft/class_3737", SimpleWaterloggedBlock.class);
+        addClass("net/minecraft/class_265", VoxelShape.class);
+        addClass("net/minecraft/class_259", Shapes.class);
 
         addMethod("net/minecraft/class_1799", "method_7909", "getItem");
         addMethod("net/minecraft/class_1792", "method_7854", "getDefaultInstance");
         addMethod("net/minecraft/class_1792", "method_7882", "getDefaultMaxStackSize");
         addMethod("net/minecraft/class_4970$class_4971", "method_26204", "getBlock");
+        addMethod("net/minecraft/class_2248", "method_9541", "box");
+        addMethod("net/minecraft/class_259", "method_1073", "empty");
+        addMethod("net/minecraft/class_259", "method_1077", "block");
+        addMethod("net/minecraft/class_259", "box", "cuboid");
 
         addField("net/minecraft/class_2246", "field_10124", "AIR");
         addField("net/minecraft/class_2246", "field_10340", "STONE");
