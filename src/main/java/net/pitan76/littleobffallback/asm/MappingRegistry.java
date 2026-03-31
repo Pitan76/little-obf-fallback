@@ -220,11 +220,14 @@ public class MappingRegistry {
         // ItemStack.EMPTY
         addField("net/minecraft/class_1799", "field_8037", "EMPTY");
 
+        // Direction
         addField("net/minecraft/class_2350", "field_11033", "DOWN");
         addField("net/minecraft/class_2350", "field_11036", "UP");
         addField("net/minecraft/class_2350", "field_11043", "NORTH");
         addField("net/minecraft/class_2350", "field_11035", "SOUTH");
         addField("net/minecraft/class_2350", "field_11039", "WEST");
         addField("net/minecraft/class_2350", "field_11034", "EAST");
+
+        addField("net/minecraft/class_1661", "field_7546", "player");
     }
 }
