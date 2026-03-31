@@ -8,10 +8,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -134,6 +136,8 @@ public class MappingRegistry {
         addClass("net/minecraft/class_437", Screen.class);
         addClass("net/minecraft/class_364", GuiEventListener.class);
         addClass("net/minecraft/class_827", BlockEntityRenderer.class);
+        addClass("net/minecraft/class_1263", Container.class);
+        addClass("net/minecraft/class_1661", Inventory.class);
 
         addMethod("net/minecraft/class_1799", "method_7909", "getItem");
         addMethod("net/minecraft/class_1792", "method_7854", "getDefaultInstance");
@@ -145,6 +149,17 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_259", "box", "cuboid");
         addMethod("net/minecraft/class_1297", "method_5735", "getDirection");
         addMethod("net/minecraft/class_1309", "method_5735", "getDirection");
+        addMethod("net/minecraft/class_1263", "method_5439", "getContainerSize");
+        addMethod("net/minecraft/class_1263", "method_5442", "isEmpty");
+        addMethod("net/minecraft/class_1263", "method_5438", "getItem");
+        addMethod("net/minecraft/class_1263", "method_5434", "removeItem");
+        addMethod("net/minecraft/class_1263", "method_5441", "removeItemNoUpdate");
+        addMethod("net/minecraft/class_1263", "method_5447", "setItem");
+        addMethod("net/minecraft/class_1263", "method_5431", "setChanged");
+        addMethod("net/minecraft/class_1263", "method_5443", "stillValid");
+        addMethod("net/minecraft/class_1263", "method_5448", "clearContent");
+        addMethod("net/minecraft/class_1263", "method_18861", "countItem");
+        addMethod("net/minecraft/class_1263", "method_5437", "canPlaceItem");
 
         addField("net/minecraft/class_2246", "field_10124", "AIR");
         addField("net/minecraft/class_2246", "field_10340", "STONE");
