@@ -144,6 +144,7 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_259", "method_1077", "block");
         addMethod("net/minecraft/class_259", "box", "cuboid");
         addMethod("net/minecraft/class_1297", "method_5735", "getDirection");
+        addMethod("net/minecraft/class_1309", "method_5735", "getDirection");
 
         addField("net/minecraft/class_2246", "field_10124", "AIR");
         addField("net/minecraft/class_2246", "field_10340", "STONE");
