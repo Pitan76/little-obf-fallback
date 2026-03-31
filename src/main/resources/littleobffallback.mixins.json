@@ -24,7 +24,7 @@
     "NonNullListMixin",
     "PropertyMixin",
     "SlotMixin",
-    "Vec3iMixin",
+    "Vec3iMixin"
   ],
   "client": [
   ],
