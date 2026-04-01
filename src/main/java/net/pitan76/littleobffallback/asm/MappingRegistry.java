@@ -241,6 +241,7 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1799", "method_7934", "shrink");
         addMethod("net/minecraft/class_1799", "method_7939", "setCount");
         addMethod("net/minecraft/class_1799", "method_7974", "setDamageValue");
+        addMethod("net/minecraft/class_1799", "method_7972", "copy");
 
         // Entity
         addMethod("net/minecraft/class_1297", "method_5864", "getType");
@@ -411,7 +412,7 @@ public class MappingRegistry {
         addField("net/minecraft/class_1802", "field_8280", "GLASS");
         addField("net/minecraft/class_1802", "field_8705", "WATER_BUCKET");
 
-        // ItemStack.EMPTY
+        // ItemStack
         addField("net/minecraft/class_1799", "field_8037", "EMPTY");
 
         // Direction
