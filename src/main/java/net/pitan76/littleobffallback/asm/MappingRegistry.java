@@ -3,6 +3,7 @@ package net.pitan76.littleobffallback.asm;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
@@ -201,6 +202,8 @@ public class MappingRegistry {
         addClass("net/minecraft/class_18", SavedData.class); // PersistentState
         addClass("net/minecraft/class_239", HitResult.class); // HitResult
         addClass("net/minecraft/class_239$class_240", HitResult.Type.class); // HitResult$Type
+        addClass("net/minecraft/class_4185", Button.class); // ButtonWidget
+        addClass("net/minecraft/class_4185$class_4241", Button.OnPress.class); // ButtonWidget.PressAction
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
@@ -233,6 +236,11 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_259", "box", "cuboid");
         addMethod("net/minecraft/class_1297", "method_5735", "getDirection");
         addMethod("net/minecraft/class_1309", "method_5735", "getDirection");
+        addMethod("net/minecraft/class_1735", "method_53512", "set");
+        addMethod("net/minecraft/class_1735", "method_7677", "getItem");
+        addMethod("net/minecraft/class_1735", "method_7680", "mayPlace");
+
+        // Container (Inventory)
         addMethod("net/minecraft/class_1263", "method_5439", "getContainerSize");
         addMethod("net/minecraft/class_1263", "method_5442", "isEmpty");
         addMethod("net/minecraft/class_1263", "method_5438", "getItem");
@@ -244,9 +252,19 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1263", "method_5448", "clearContent");
         addMethod("net/minecraft/class_1263", "method_18861", "countItem");
         addMethod("net/minecraft/class_1263", "method_5437", "canPlaceItem");
-        addMethod("net/minecraft/class_1735", "method_53512", "set");
-        addMethod("net/minecraft/class_1735", "method_7677", "getItem");
-        addMethod("net/minecraft/class_1735", "method_7680", "mayPlace");
+
+        // SimpleContainer (SimpleInventory)
+        addMethod("net/minecraft/class_1277", "method_5439", "getContainerSize");
+        addMethod("net/minecraft/class_1277", "method_5442", "isEmpty");
+        addMethod("net/minecraft/class_1277", "method_5438", "getItem");
+        addMethod("net/minecraft/class_1277", "method_5434", "removeItem");
+        addMethod("net/minecraft/class_1277", "method_5441", "removeItemNoUpdate");
+        addMethod("net/minecraft/class_1277", "method_5447", "setItem");
+        addMethod("net/minecraft/class_1277", "method_5431", "setChanged");
+        addMethod("net/minecraft/class_1277", "method_5443", "stillValid");
+        addMethod("net/minecraft/class_1277", "method_5448", "clearContent");
+        addMethod("net/minecraft/class_1277", "method_18861", "countItem");
+        addMethod("net/minecraft/class_1277", "method_5437", "canPlaceItem");
 
         // Identifier
         addMethod("net/minecraft/class_2960", "method_60655", "fromNamespaceAndPath"); // of
