@@ -236,6 +236,26 @@ public class MappingRegistry {
         // Direction
         addMethod("net/minecraft/class_2350", "method_10153", "getOpposite");
 
+        // Vec3i
+        addMethod("net/minecraft/class_2382", "method_10263", "getX");
+        addMethod("net/minecraft/class_2382", "method_10264", "getY");
+        addMethod("net/minecraft/class_2382", "method_10260", "getZ");
+
+        // BlockPos
+        addMethod("net/minecraft/class_2338", "method_10263", "getX");
+        addMethod("net/minecraft/class_2338", "method_10264", "getY");
+        addMethod("net/minecraft/class_2338", "method_10260", "getZ");
+        addMethod("net/minecraft/class_2338", "method_30931", "above");
+        addMethod("net/minecraft/class_2338", "method_23228", "below");
+        addMethod("net/minecraft/class_2338", "method_35861", "north");
+        addMethod("net/minecraft/class_2338", "method_35859", "south");
+        addMethod("net/minecraft/class_2338", "method_35855", "east");
+        addMethod("net/minecraft/class_2338", "method_35857", "west");
+        addMethod("net/minecraft/class_2338", "method_35853", "offset");
+        addMethod("net/minecraft/class_2338", "method_34592", "offset");
+        addMethod("net/minecraft/class_2338", "method_35852", "subtract");
+        addMethod("net/minecraft/class_2338", "method_35862", "multiply");
+
         // Items
         addField("net/minecraft/class_2246", "field_10124", "AIR");
         addField("net/minecraft/class_2246", "field_10340", "STONE");

@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "BlockEntityMixin",
-    "BlockPosMixin",
     "BlockStateMixin",
     "EntityMixin",
     "EntityTypeMixin",
@@ -13,7 +12,6 @@
     "LevelMixin",
     "MenuProviderMixin",
     "PropertyMixin",
-    "Vec3iMixin"
   ],
   "client": [
   ],
