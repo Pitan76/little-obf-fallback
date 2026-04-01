@@ -241,6 +241,7 @@ public class MappingRegistry {
 
         // DataComponentType
         addMethod("net/minecraft/class_9331", "method_57873", "builder"); // builder
+        addMethod("net/minecraft/class_9331$class_9332", "method_57881", "persistent"); // builder
 
         // NonNullList
         addMethod("net/minecraft/class_2371", "method_10211", "create");
