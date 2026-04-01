@@ -319,6 +319,11 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_2338", "method_35852", "subtract");
         addMethod("net/minecraft/class_2338", "method_35862", "multiply");
 
+        // FluidState
+        addMethod("net/minecraft/class_3610", "method_15772", "getType");
+        addMethod("net/minecraft/class_3610", "method_15769", "isEmpty");
+
+
         // Items
         addField("net/minecraft/class_2246", "field_10124", "AIR");
         addField("net/minecraft/class_2246", "field_10340", "STONE");
