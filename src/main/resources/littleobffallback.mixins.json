@@ -4,14 +4,13 @@
   "package": "net.pitan76.littleobffallback.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "BlockEntityMixin",
     "BlockStateMixin",
     "EntityMixin",
     "EntityTypeMixin",
     "ItemMixin",
     "LevelMixin",
     "MenuProviderMixin",
-    "PropertyMixin",
+    "PropertyMixin"
   ],
   "client": [
   ],

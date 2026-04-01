@@ -220,6 +220,14 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1297", "method_18800", "setDeltaMovement");
         addMethod("net/minecraft/class_1309", "method_5805", "isAlive");
 
+        // BlockEntity
+        addMethod("net/minecraft/class_2586", "method_11017", "getType");
+        addMethod("net/minecraft/class_2586", "method_10997", "getLevel");
+        addMethod("net/minecraft/class_2586", "method_11016", "getBlockPos");
+        addMethod("net/minecraft/class_2586", "method_11010", "getBlockState");
+        addMethod("net/minecraft/class_2586", "method_31662", "setLevel");
+        addMethod("net/minecraft/class_2586", "method_11015", "isRemoved");
+
         // Block
         addMethod("net/minecraft/class_2248", "method_26160", "asBlock");
         addMethod("net/minecraft/class_2248", "method_8389", "asItem");
