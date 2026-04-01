@@ -309,12 +309,23 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_2338", "method_10260", "getZ");
         addMethod("net/minecraft/class_2338", "method_10093", "relative"); // offset
         addMethod("net/minecraft/class_2338", "method_10079", "relative"); // offset
+
+        // BlockPos 1.20.4
+        addMethod("net/minecraft/class_2338", "method_10084", "above"); // up
+        addMethod("net/minecraft/class_2338", "method_10074", "below"); // down
+        addMethod("net/minecraft/class_2338", "method_10095", "north");
+        addMethod("net/minecraft/class_2338", "method_10072", "south");
+        addMethod("net/minecraft/class_2338", "method_10078", "east");
+        addMethod("net/minecraft/class_2338", "method_10067", "west");
+
+        // BlockPos 1.21.11
         addMethod("net/minecraft/class_2338", "method_30931", "above"); // up
         addMethod("net/minecraft/class_2338", "method_23228", "below"); // down
         addMethod("net/minecraft/class_2338", "method_35861", "north");
         addMethod("net/minecraft/class_2338", "method_35859", "south");
         addMethod("net/minecraft/class_2338", "method_35855", "east");
         addMethod("net/minecraft/class_2338", "method_35857", "west");
+
         addMethod("net/minecraft/class_2338", "method_35853", "offset"); // add
         addMethod("net/minecraft/class_2338", "method_34592", "offset"); // add
         addMethod("net/minecraft/class_2338", "method_35852", "subtract");
