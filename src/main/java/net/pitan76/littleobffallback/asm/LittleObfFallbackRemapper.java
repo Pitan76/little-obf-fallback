@@ -5,7 +5,7 @@ import org.objectweb.asm.commons.Remapper;
 
 public class LittleObfFallbackRemapper extends Remapper {
 
-    public static boolean isChanged = false;
+    public boolean isChanged = false;
 
     public LittleObfFallbackRemapper() {
         super(Opcodes.ASM9);

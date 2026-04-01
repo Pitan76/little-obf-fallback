@@ -29,11 +29,13 @@ public class LittleObfFallbackTransformer implements ClassFileTransformer {
             ClassReader reader = new ClassReader(classfileBuffer);
             ClassWriter writer = new ClassWriter(reader, ClassWriter.COMPUTE_MAXS);
 
-            ClassRemapper classRemapper = new ClassRemapper(writer, new LittleObfFallbackRemapper());
+            LittleObfFallbackRemapper remapper = new LittleObfFallbackRemapper();
+
+            ClassRemapper classRemapper = new ClassRemapper(writer, remapper);
             reader.accept(classRemapper, 0);
 
             // 変換があった場合のみ、新しいバイトコードを返す
-            if (LittleObfFallbackRemapper.isChanged) {
+            if (remapper.isChanged) {
                 return writer.toByteArray();
             }
 
