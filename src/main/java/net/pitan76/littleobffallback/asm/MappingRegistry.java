@@ -301,28 +301,29 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1937", "method_8320", "getBlockState");
         addMethod("net/minecraft/class_1937", "method_8501", "setBlock");
         addMethod("net/minecraft/class_1937", "method_8652", "setBlock");
+        addMethod("net/minecraft/class_1937", "method_8316", "getFluidState");
 
         // BlockPos
         addMethod("net/minecraft/class_2338", "method_10263", "getX");
         addMethod("net/minecraft/class_2338", "method_10264", "getY");
         addMethod("net/minecraft/class_2338", "method_10260", "getZ");
-        addMethod("net/minecraft/class_2338", "method_10093", "relative");
-        addMethod("net/minecraft/class_2338", "method_10079", "relative");
-        addMethod("net/minecraft/class_2338", "method_30931", "above");
-        addMethod("net/minecraft/class_2338", "method_23228", "below");
+        addMethod("net/minecraft/class_2338", "method_10093", "relative"); // offset
+        addMethod("net/minecraft/class_2338", "method_10079", "relative"); // offset
+        addMethod("net/minecraft/class_2338", "method_30931", "above"); // up
+        addMethod("net/minecraft/class_2338", "method_23228", "below"); // down
         addMethod("net/minecraft/class_2338", "method_35861", "north");
         addMethod("net/minecraft/class_2338", "method_35859", "south");
         addMethod("net/minecraft/class_2338", "method_35855", "east");
         addMethod("net/minecraft/class_2338", "method_35857", "west");
-        addMethod("net/minecraft/class_2338", "method_35853", "offset");
-        addMethod("net/minecraft/class_2338", "method_34592", "offset");
+        addMethod("net/minecraft/class_2338", "method_35853", "offset"); // add
+        addMethod("net/minecraft/class_2338", "method_34592", "offset"); // add
         addMethod("net/minecraft/class_2338", "method_35852", "subtract");
         addMethod("net/minecraft/class_2338", "method_35862", "multiply");
 
         // FluidState
-        addMethod("net/minecraft/class_3610", "method_15772", "getType");
+        addMethod("net/minecraft/class_3610", "method_15772", "getType"); // getFluid
         addMethod("net/minecraft/class_3610", "method_15769", "isEmpty");
-
+        addMethod("net/minecraft/class_3610", "method_15771", "isSource"); // isStill
 
         // Items
         addField("net/minecraft/class_2246", "field_10124", "AIR");
