@@ -330,6 +330,8 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_2338", "method_10059", "subtract");
         addMethod("net/minecraft/class_2338", "method_35830", "multiply");
 
+        addMethod("net/minecraft/class_2338", "method_19455", "distManhattan"); // getManhattanDistance
+
         // BlockPos 1.21.11
         addMethod("net/minecraft/class_2338", "method_30931", "above"); // up
         addMethod("net/minecraft/class_2338", "method_23228", "below"); // down
