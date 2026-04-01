@@ -207,6 +207,27 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1799", "method_7939", "setCount");
         addMethod("net/minecraft/class_1799", "method_7974", "setDamageValue");
 
+        // Entity
+        addMethod("net/minecraft/class_1297", "method_5864", "getType");
+        addMethod("net/minecraft/class_1297", "method_36455", "getYRot");
+        addMethod("net/minecraft/class_1297", "method_36454", "getXRot");
+        addMethod("net/minecraft/class_1297", "method_24515", "blockPosition");
+        addMethod("net/minecraft/class_1297", "method_5715", "isShiftKeyDown");
+        addMethod("net/minecraft/class_1297", "method_51502", "setLevel");
+        addMethod("net/minecraft/class_1297", "method_5814", "setPos");
+        addMethod("net/minecraft/class_1297", "method_18798", "getDeltaMovement");
+        addMethod("net/minecraft/class_1297", "method_18799", "setDeltaMovement");
+        addMethod("net/minecraft/class_1297", "method_18800", "setDeltaMovement");
+        addMethod("net/minecraft/class_1309", "method_5805", "isAlive");
+
+        // Block
+        addMethod("net/minecraft/class_2248", "method_26160", "asBlock");
+        addMethod("net/minecraft/class_2248", "method_8389", "asItem");
+        addMethod("net/minecraft/class_2248", "method_9545", "getFluidState");
+        addMethod("net/minecraft/class_2248", "method_36555", "defaultDestroyTime");
+        addMethod("net/minecraft/class_2248", "method_9518", "getName");
+        addMethod("net/minecraft/class_2248", "method_9564", "defaultBlockState");
+
         // Items
         addField("net/minecraft/class_2246", "field_10124", "AIR");
         addField("net/minecraft/class_2246", "field_10340", "STONE");
