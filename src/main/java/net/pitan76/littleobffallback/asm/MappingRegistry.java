@@ -15,6 +15,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
@@ -116,6 +117,7 @@ public class MappingRegistry {
     }
 
     static {
+        addClass("net/minecraft/class_2960", Identifier.class);
         addClass("net/minecraft/class_1309", LivingEntity.class);
         addClass("net/minecraft/class_1657", Player.class); // PlayerEntity
         addClass("net/minecraft/class_1297", Entity.class);
@@ -210,6 +212,15 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1735", "method_53512", "set");
         addMethod("net/minecraft/class_1735", "method_7677", "getItem");
         addMethod("net/minecraft/class_1735", "method_7680", "mayPlace");
+
+        // Identifier
+        addMethod("net/minecraft/class_2960", "method_60655", "fromNamespaceAndPath"); // of
+        addMethod("net/minecraft/class_2960", "method_60654", "parse"); // of
+        addMethod("net/minecraft/class_2960", "method_60656", "withDefaultNamespace"); // ofVanilla
+        addMethod("net/minecraft/class_2960", "method_12829", "tryParse"); // tryParse
+        addMethod("net/minecraft/class_2960", "method_43902", "tryBuild"); // tryParse
+        addMethod("net/minecraft/class_2960", "method_12838", "bySeparator"); // splitOn
+        addMethod("net/minecraft/class_2960", "method_60935", "tryBySeparator"); // trySplitOn
 
         // Component
         addMethod("net/minecraft/class_2561", "method_10866", "getStyle");
