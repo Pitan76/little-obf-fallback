@@ -117,53 +117,52 @@ public class MappingRegistry {
 
     static {
         addClass("net/minecraft/class_1309", LivingEntity.class);
-        addClass("net/minecraft/class_1657", Player.class);
+        addClass("net/minecraft/class_1657", Player.class); // PlayerEntity
         addClass("net/minecraft/class_1297", Entity.class);
         addClass("net/minecraft/class_1299", EntityType.class);
         addClass("net/minecraft/class_1542", ItemEntity.class);
-        addClass("net/minecraft/class_1308", Mob.class);
-        addClass("net/minecraft/class_1303", ExperienceOrb.class);
+        addClass("net/minecraft/class_1308", Mob.class); // MobEntity
+        addClass("net/minecraft/class_1303", ExperienceOrb.class); // ExperienceOrbEntity
         addClass("net/minecraft/class_2248", Block.class);
         addClass("net/minecraft/class_2246", Blocks.class);
         addClass("net/minecraft/class_2350", Direction.class);
         addClass("net/minecraft/class_1799", ItemStack.class);
-        addClass("net/minecraft/class_4970", BlockBehaviour.class);
-        addClass("net/minecraft/class_4970$class_2251", BlockBehaviour.Properties.class);
-        addClass("net/minecraft/class_243", Vec3.class);
-        addClass("net/minecraft/class_3218", ServerLevel.class);
-        addClass("net/minecraft/class_1937", Level.class);
+        addClass("net/minecraft/class_4970", BlockBehaviour.class); // AbstractBlock
+        addClass("net/minecraft/class_4970$class_2251", BlockBehaviour.Properties.class); // AbstractBlock.Settings
+        addClass("net/minecraft/class_243", Vec3.class); // Vec3d
+        addClass("net/minecraft/class_3218", ServerLevel.class); // ServerWorld
+        addClass("net/minecraft/class_1937", Level.class); // World
         addClass("net/minecraft/class_2586", BlockEntity.class);
         addClass("net/minecraft/class_2591", BlockEntityType.class);
-        addClass("net/minecraft/class_1703", AbstractContainerMenu.class);
-        addClass("net/minecraft/class_3917", MenuType.class);
+        addClass("net/minecraft/class_1703", AbstractContainerMenu.class); // ScreenHandler
         addClass("net/minecraft/class_2338", BlockPos.class);
         addClass("net/minecraft/class_2382", Vec3i.class);
         addClass("net/minecraft/class_2397", LeavesBlock.class);
         addClass("net/minecraft/class_2680", BlockState.class);
-        addClass("net/minecraft/class_4970$class_4971", BlockBehaviour.BlockStateBase.class);
+        addClass("net/minecraft/class_4970$class_4971", BlockBehaviour.BlockStateBase.class); // AbstractBlockState
         addClass("net/minecraft/class_1792", Item.class);
         addClass("net/minecraft/class_1802", Items.class);
         addClass("net/minecraft/class_1747", BlockItem.class);
-        addClass("net/minecraft/class_1793", Item.Properties.class);
-        addClass("net/minecraft/class_3737", SimpleWaterloggedBlock.class);
+        addClass("net/minecraft/class_1793", Item.Properties.class); // Item.Settings
+        addClass("net/minecraft/class_3737", SimpleWaterloggedBlock.class); // Waterloggable
         addClass("net/minecraft/class_265", VoxelShape.class);
-        addClass("net/minecraft/class_259", Shapes.class);
-        addClass("net/minecraft/class_2540", FriendlyByteBuf.class);
-        addClass("net/minecraft/class_1263", Container.class);
-        addClass("net/minecraft/class_1661", Inventory.class);
+        addClass("net/minecraft/class_259", Shapes.class); // VoxelShapes
+        addClass("net/minecraft/class_2540", FriendlyByteBuf.class); // PacketByteBuf
+        addClass("net/minecraft/class_1263", Container.class); // Inventory
+        addClass("net/minecraft/class_1661", Inventory.class); // PlayerInventory
         addClass("net/minecraft/class_1735", Slot.class);
-        addClass("net/minecraft/class_2561", Component.class);
-        addClass("net/minecraft/class_5250", MutableComponent.class);
-        addClass("net/minecraft/class_2371", NonNullList.class);
-        addClass("net/minecraft/class_1277", SimpleContainer.class);
-        addClass("net/minecraft/class_3908", MenuProvider.class);
-        addClass("net/minecraft/class_3917", MenuType.class);
-        addClass("net/minecraft/class_1935", ItemLike.class);
+        addClass("net/minecraft/class_2561", Component.class); // Text
+        addClass("net/minecraft/class_5250", MutableComponent.class); // MutableText
+        addClass("net/minecraft/class_2371", NonNullList.class); // DefaultedList
+        addClass("net/minecraft/class_1277", SimpleContainer.class); // SimpleInventory
+        addClass("net/minecraft/class_3908", MenuProvider.class); // ScreenHandlerProvider
+        addClass("net/minecraft/class_3917", MenuType.class); // ScreenHandlerType
+        addClass("net/minecraft/class_1935", ItemLike.class); // ItemConvertible
         addClass("net/minecraft/class_2769", Property.class);
-        addClass("net/minecraft/class_3222", ServerPlayer.class);
+        addClass("net/minecraft/class_3222", ServerPlayer.class); // ServerPlayerEntity
         addClass("net/minecraft/class_2189", AirBlock.class);
         addClass("net/minecraft/class_2404", LiquidBlock.class); // FluidBlock
-        addClass("net/minecraft/class_2487", CompoundTag.class);
+        addClass("net/minecraft/class_2487", CompoundTag.class); // NbtCompound
         addClass("net/minecraft/class_1301", EntitySelector.class); // EntityPredicates
         addClass("net/minecraft/class_238", AABB.class); // Box
         addClass("net/minecraft/class_3610", FluidState.class);
@@ -174,13 +173,13 @@ public class MappingRegistry {
 
         if (!isServerOnly) {
             try {
-                addClass("net/minecraft/class_310", Minecraft.class);
-                addClass("net/minecraft/class_327", Font.class);
+                addClass("net/minecraft/class_310", Minecraft.class); // MinecraftClient
+                addClass("net/minecraft/class_327", Font.class); // TextRenderer
                 addClass("net/minecraft/class_437", Screen.class);
-                addClass("net/minecraft/class_364", GuiEventListener.class);
+                addClass("net/minecraft/class_364", GuiEventListener.class); // Element
                 addClass("net/minecraft/class_827", BlockEntityRenderer.class);
-                addClass("net/minecraft/class_638", ClientLevel.class);
-                addClass("net/minecraft/class_746", LocalPlayer.class);
+                addClass("net/minecraft/class_638", ClientLevel.class); // ClientWorld
+                addClass("net/minecraft/class_746", LocalPlayer.class); // ClientPlayerEntity
             } catch (Exception _) {
                 // クライアントでない場合は次から無視する
                 isServerOnly = true;
@@ -263,6 +262,7 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_2586", "method_11010", "getBlockState");
         addMethod("net/minecraft/class_2586", "method_31662", "setLevel");
         addMethod("net/minecraft/class_2586", "method_11015", "isRemoved");
+        addMethod("net/minecraft/class_2586", "method_5431", "setChanged"); // markDirty
 
         // Block
         addMethod("net/minecraft/class_2248", "method_26160", "asBlock");
