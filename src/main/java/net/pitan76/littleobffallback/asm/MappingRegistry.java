@@ -17,6 +17,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
@@ -38,6 +39,9 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
@@ -135,6 +139,9 @@ public class MappingRegistry {
     static {
         addClass("net/minecraft/class_2960", Identifier.class);
         addClass("net/minecraft/class_1309", LivingEntity.class);
+        addClass("net/minecraft/class_1676", Projectile.class);
+        addClass("net/minecraft/class_1682", ThrowableProjectile.class);
+        addClass("net/minecraft/class_3857", ThrowableItemProjectile.class);
         addClass("net/minecraft/class_1657", Player.class); // PlayerEntity
         addClass("net/minecraft/class_1297", Entity.class);
         addClass("net/minecraft/class_1299", EntityType.class);
@@ -207,6 +214,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_4185$class_4241", Button.OnPress.class); // ButtonWidget.PressAction
         addClass("net/minecraft/class_1311", MobCategory.class); // SpawnGroup
         addClass("net/minecraft/class_1278", WorldlyContainer.class); // SidedInventory
+        addClass("net/minecraft/class_2392", ParticleType.class); // ItemStackParticleEffect (ParticleType<ItemParticleOption>)
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
