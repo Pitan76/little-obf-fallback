@@ -39,6 +39,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
@@ -173,6 +174,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_9331$class_9332", DataComponentType.Builder.class); // DataComponentType$Builder
         addClass("net/minecraft/class_1761", CreativeModeTab.class); // ItemGroup
         addClass("net/minecraft/class_7706", CreativeModeTabs.class); // ItemGroups
+        addClass("net/minecraft/class_3609", FlowingFluid.class); // FlowableFluid
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
