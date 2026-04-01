@@ -275,6 +275,21 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1277", "method_18861", "countItem");
         addMethod("net/minecraft/class_1277", "method_5437", "canPlaceItem");
 
+        // Inventory (PlayerInventory)
+        addMethod("net/minecraft/class_1661", "method_5439", "getContainerSize");
+        addMethod("net/minecraft/class_1661", "method_5442", "isEmpty");
+        addMethod("net/minecraft/class_1661", "method_5438", "getItem");
+        addMethod("net/minecraft/class_1661", "method_5434", "removeItem");
+        addMethod("net/minecraft/class_1661", "method_5441", "removeItemNoUpdate");
+        addMethod("net/minecraft/class_1661", "method_5447", "setItem");
+        addMethod("net/minecraft/class_1661", "method_5431", "setChanged");
+        addMethod("net/minecraft/class_1661", "method_5443", "stillValid");
+        addMethod("net/minecraft/class_1661", "method_5448", "clearContent");
+        addMethod("net/minecraft/class_1661", "method_18861", "countItem");
+        addMethod("net/minecraft/class_1661", "method_5437", "canPlaceItem");
+
+        addMethod("net/minecraft/class_1661", "method_7379", "contains");
+
         // Identifier
         addMethod("net/minecraft/class_2960", "method_60655", "fromNamespaceAndPath"); // of
         addMethod("net/minecraft/class_2960", "method_60654", "parse"); // of
