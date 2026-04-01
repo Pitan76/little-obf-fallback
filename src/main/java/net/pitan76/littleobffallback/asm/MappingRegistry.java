@@ -1,5 +1,6 @@
 package net.pitan76.littleobffallback.asm;
 
+import net.fabricmc.fabric.api.transfer.v1.item.ContainerStorage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -164,6 +165,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_2487", CompoundTag.class);
         addClass("net/minecraft/class_1301", EntitySelector.class); // EntityPredicates
         addClass("net/minecraft/class_238", AABB.class); // Box
+        addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", ContainerStorage.class); // InventoryStorage
 
         if (!isServerOnly) {
             try {
