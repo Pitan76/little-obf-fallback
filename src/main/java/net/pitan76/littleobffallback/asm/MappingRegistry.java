@@ -423,6 +423,9 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_3610", "method_15769", "isEmpty");
         addMethod("net/minecraft/class_3610", "method_15771", "isSource"); // isStill
 
+        // AbstractContainerMenu (ScreenHandler)
+        addMethod("net/minecraft/class_1703", "method_34255", "getCarried"); // getCursorStack
+
         // EntitySelector
         addField("net/minecraft/class_1301", "field_6154", "ENTITY_STILL_ALIVE");
         addField("net/minecraft/class_1301", "field_6157", "ENTITY_STILL_ALIVE");
