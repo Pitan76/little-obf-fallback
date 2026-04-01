@@ -11,6 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -32,10 +33,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -160,6 +158,10 @@ public class MappingRegistry {
         addClass("net/minecraft/class_1935", ItemLike.class);
         addClass("net/minecraft/class_2769", Property.class);
         addClass("net/minecraft/class_3222", ServerPlayer.class);
+        addClass("net/minecraft/class_2189", AirBlock.class);
+        addClass("net/minecraft/class_2404", LiquidBlock.class);
+        addClass("net/minecraft/class_2487", CompoundTag.class);
+        addClass("net/minecraft/class_1301", EntitySelector.class);
 
         if (!isServerOnly) {
             try {
@@ -358,6 +360,10 @@ public class MappingRegistry {
         addField("net/minecraft/class_2246", "field_10146", "BLACK_WOOL");
         addField("net/minecraft/class_2246", "field_10153", "QUARTZ_BLOCK");
         addField("net/minecraft/class_2246", "field_10286", "PURPUR_BLOCK");
+
+        // EntitySelector
+        addField("net/minecraft/class_1301", "field_6154", "ENTITY_STILL_ALIVE");
+        addField("net/minecraft/class_1301", "field_6157", "ENTITY_STILL_ALIVE");
 
         // Blocks
         addField("net/minecraft/class_1802", "field_8162", "AIR");
