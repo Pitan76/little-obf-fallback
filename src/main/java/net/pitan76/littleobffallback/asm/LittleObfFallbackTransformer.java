@@ -1,49 +1,39 @@
 package net.pitan76.littleobffallback.asm;
 
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.commons.ClassRemapper;
+import org.objectweb.asm.tree.ClassNode;
 
-import java.lang.instrument.ClassFileTransformer;
-import java.security.ProtectionDomain;
+import java.util.function.Consumer;
 
-public class LittleObfFallbackTransformer implements ClassFileTransformer {
+public class LittleObfFallbackTransformer implements Consumer<ClassNode> {
 
     @Override
-    public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
-        if (className == null) return null;
-
-        // システムクラスやライブラリ群は変換対象から除外して高速化
-        if (className.startsWith("java/") || className.startsWith("sun/") || 
-            className.startsWith("jdk/") || className.startsWith("org/objectweb/asm/") ||
-            className.startsWith("net/minecraft/") || className.startsWith("net/pitan76/littleobffallback/") ||
-            className.startsWith("com/google/") || className.startsWith("org/apache/") ||
-            className.startsWith("org/spongepowered/") || className.startsWith("org/slf4j/") ||
-            className.startsWith("org/log4j/") || className.startsWith("org/jetbrains/") ||
-            className.startsWith("org/gradle/") || className.startsWith("org/fabricmc/") ||
-            className.startsWith("net/pitan76/mcpitanlib/")) {
-            return null;
+    public void accept(ClassNode node) {
+        String name = node.name;
+        if (name.startsWith("java/") || name.startsWith("sun/") ||
+                name.startsWith("jdk/") || name.startsWith("org/objectweb/asm/") ||
+                name.startsWith("net/minecraft/") || name.startsWith("net/pitan76/littleobffallback/") ||
+                name.startsWith("com/google/") || name.startsWith("org/apache/") ||
+                name.startsWith("org/spongepowered/") || name.startsWith("org/slf4j/") ||
+                name.startsWith("org/log4j/") || name.startsWith("org/jetbrains/") ||
+                name.startsWith("org/gradle/") || name.startsWith("net/fabricmc/") ||
+                name.startsWith("com/chocohead/mm/") || name.startsWith("com/mojang/") ||
+                name.startsWith("net/pitan76/mcpitanlib/")) {
+            return;
         }
+        
+        LittleObfFallbackRemapper remapper = new LittleObfFallbackRemapper();
 
-        try {
-            ClassReader reader = new ClassReader(classfileBuffer);
-            ClassWriter writer = new ClassWriter(reader, ClassWriter.COMPUTE_MAXS);
+        ClassNode remapped = new ClassNode();
+        ClassRemapper classRemapper = new ClassRemapper(remapped, remapper);
+        node.accept(classRemapper);
 
-            LittleObfFallbackRemapper remapper = new LittleObfFallbackRemapper();
-
-            ClassRemapper classRemapper = new ClassRemapper(writer, remapper);
-            reader.accept(classRemapper, 0);
-
-            // 変換があった場合のみ、新しいバイトコードを返す
-            if (remapper.isChanged) {
-                return writer.toByteArray();
-            }
-
-            return null; // 変更なしの場合はnullを返すと、元のバイトコードがそのまま使われる
-        } catch (Throwable t) {
-            System.err.println("[LittleObfFallback] Failed to transform class: " + className);
-            t.printStackTrace();
-            return null;
+        if (remapper.isChanged) {
+            node.name = remapped.name;
+            node.methods = remapped.methods;
+            node.fields = remapped.fields;
+            node.interfaces = remapped.interfaces;
+            node.superName = remapped.superName;
         }
     }
 }

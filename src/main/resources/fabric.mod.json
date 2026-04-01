@@ -4,17 +4,19 @@
   "version": "${version}",
   "name": "LittleObfFallback",
   "description": "An obfuscation fallback layer",
-  "authors": [],
-  "contact": {},
+  "authors": [
+    "Pitan"
+  ],
+  "contact": {
+    "issues": "https://github.com/Pitan76/little-obf-fallback/issues",
+    "sources": "https://github.com/Pitan76/little-obf-fallback"
+  },
   "license": "MIT",
   "icon": "assets/littleobffallback/icon.png",
   "environment": "*",
   "entrypoints": {
     "preLaunch": [
       "net.pitan76.littleobffallback.LittleObfFallbackPreLaunch"
-    ],
-    "client": [
-      "net.pitan76.littleobffallback.client.LittleObfFallbackClient"
     ],
     "main": [
       "net.pitan76.littleobffallback.LittleObfFallback"
