@@ -2,11 +2,15 @@ package net.pitan76.littleobffallback.asm;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.components.AbstractTextAreaWidget;
+import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -201,6 +205,9 @@ public class MappingRegistry {
                 addClass("net/minecraft/class_827", BlockEntityRenderer.class);
                 addClass("net/minecraft/class_638", ClientLevel.class); // ClientWorld
                 addClass("net/minecraft/class_746", LocalPlayer.class); // ClientPlayerEntity
+                addClass("net/minecraft/class_1074", I18n.class);
+                addClass("net/minecraft/class_342", EditBox.class); // TextFieldWidget
+                addClass("net/minecraft/class_339", AbstractWidget.class); // ClickableWidget
             } catch (Exception _) {
                 // クライアントでない場合は次から無視する
                 isServerOnly = true;
@@ -337,6 +344,7 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1937", "method_8501", "setBlock");
         addMethod("net/minecraft/class_1937", "method_8652", "setBlock");
         addMethod("net/minecraft/class_1937", "method_8316", "getFluidState");
+        addMethod("net/minecraft/class_1937", "method_8503", "getServer");
 
         // BlockPos
         addMethod("net/minecraft/class_2338", "method_10263", "getX");
@@ -378,6 +386,10 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_2338", "method_34592", "offset"); // add
         addMethod("net/minecraft/class_2338", "method_35852", "subtract");
         addMethod("net/minecraft/class_2338", "method_35862", "multiply");
+
+        // I18n
+        addMethod("net/minecraft/class_1074", "method_4662", "get"); // translate
+        addMethod("net/minecraft/class_1074", "method_4663", "exists"); // hasTranslation
 
         // FluidState
         addMethod("net/minecraft/class_3610", "method_15772", "getType"); // getFluid
