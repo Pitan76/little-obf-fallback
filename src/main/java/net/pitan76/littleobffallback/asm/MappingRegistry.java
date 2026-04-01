@@ -4,6 +4,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,6 +15,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -156,6 +159,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_3917", MenuType.class);
         addClass("net/minecraft/class_1935", ItemLike.class);
         addClass("net/minecraft/class_2769", Property.class);
+        addClass("net/minecraft/class_3222", ServerPlayer.class);
 
         if (!isServerOnly) {
             try {
@@ -164,6 +168,8 @@ public class MappingRegistry {
                 addClass("net/minecraft/class_437", Screen.class);
                 addClass("net/minecraft/class_364", GuiEventListener.class);
                 addClass("net/minecraft/class_827", BlockEntityRenderer.class);
+                addClass("net/minecraft/class_638", ClientLevel.class);
+                addClass("net/minecraft/class_746", LocalPlayer.class);
             } catch (Exception _) {
                 // クライアントでない場合は次から無視する
                 isServerOnly = true;
