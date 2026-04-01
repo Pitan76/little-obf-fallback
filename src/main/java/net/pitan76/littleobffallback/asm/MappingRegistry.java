@@ -31,10 +31,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.Container;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
@@ -215,6 +212,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_1311", MobCategory.class); // SpawnGroup
         addClass("net/minecraft/class_1278", WorldlyContainer.class); // SidedInventory
         addClass("net/minecraft/class_2392", ParticleType.class); // ItemStackParticleEffect (ParticleType<ItemParticleOption>)
+        addClass("net/minecraft/class_1268", InteractionHand.class); // Hand
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
