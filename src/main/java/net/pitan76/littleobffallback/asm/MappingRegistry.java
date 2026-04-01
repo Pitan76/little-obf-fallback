@@ -13,13 +13,18 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.CompilableString;
 import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -33,6 +38,8 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -174,7 +181,13 @@ public class MappingRegistry {
         addClass("net/minecraft/class_9331$class_9332", DataComponentType.Builder.class); // DataComponentType$Builder
         addClass("net/minecraft/class_1761", CreativeModeTab.class); // ItemGroup
         addClass("net/minecraft/class_7706", CreativeModeTabs.class); // ItemGroups
+        addClass("net/minecraft/class_1936", LevelAccessor.class); // WorldAccess
         addClass("net/minecraft/class_3609", FlowingFluid.class); // FlowableFluid
+        addClass("net/minecraft/class_4538", LevelReader.class); // WorldView
+        addClass("net/minecraft/class_2394", ParticleType.class);
+        addClass("net/minecraft/class_3414", SoundEvent.class);
+        addClass("net/minecraft/class_2400", SimpleParticleType.class); // DefaultParticleType
+        addClass("net/minecraft/class_5348", FormattedText.class); // StringVisitable
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
@@ -371,67 +384,68 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_3610", "method_15769", "isEmpty");
         addMethod("net/minecraft/class_3610", "method_15771", "isSource"); // isStill
 
-        // Items
-        addField("net/minecraft/class_2246", "field_10124", "AIR");
-        addField("net/minecraft/class_2246", "field_10340", "STONE");
-        addField("net/minecraft/class_2246", "field_10474", "GRANITE");
-        addField("net/minecraft/class_2246", "field_10508", "DIORITE");
-        addField("net/minecraft/class_2246", "field_10115", "ANDESITE");
-        addField("net/minecraft/class_2246", "field_10219", "GRASS_BLOCK");
-        addField("net/minecraft/class_2246", "field_10566", "DIRT");
-        addField("net/minecraft/class_2246", "field_10253", "COARSE_DIRT");
-        addField("net/minecraft/class_2246", "field_10520", "PODZOL");
-        addField("net/minecraft/class_2246", "field_10445", "COBBLESTONE");
-        addField("net/minecraft/class_2246", "field_10161", "OAK_PLANKS");
-        addField("net/minecraft/class_2246", "field_9975", "SPRUCE_PLANKS");
-        addField("net/minecraft/class_2246", "field_10148", "BIRCH_PLANKS");
-        addField("net/minecraft/class_2246", "field_10334", "JUNGLE_PLANKS");
-        addField("net/minecraft/class_2246", "field_10218", "ACACIA_PLANKS");
-        addField("net/minecraft/class_2246", "field_42751", "CHERRY_PLANKS");
-        addField("net/minecraft/class_2246", "field_10075", "DARK_OAK_PLANKS");
-        addField("net/minecraft/class_2246", "field_54734", "PALE_OAK_WOOD");
-        addField("net/minecraft/class_2246", "field_54735", "PALE_OAK_PLANKS");
-        addField("net/minecraft/class_2246", "field_37577", "MANGROVE_PLANKS");
-        addField("net/minecraft/class_2246", "field_40294", "BAMBOO_PLANKS");
-        addField("net/minecraft/class_2246", "field_22126", "CRIMSON_PLANKS");
-        addField("net/minecraft/class_2246", "field_22127", "WARPED_PLANKS");
-        addField("net/minecraft/class_2246", "field_10033", "GLASS");
-        addField("net/minecraft/class_2246", "field_9979", "SANDSTONE");
-        addField("net/minecraft/class_2246", "field_10344", "RED_SANDSTONE");
-        addField("net/minecraft/class_2246", "field_10104", "BRICKS");
-        addField("net/minecraft/class_2246", "field_10056", "STONE_BRICKS");
-        addField("net/minecraft/class_2246", "field_10266", "NETHER_BRICKS");
-        addField("net/minecraft/class_2246", "field_9986", "RED_NETHER_BRICKS");
-        addField("net/minecraft/class_2246", "field_10462", "END_STONE_BRICKS");
-        addField("net/minecraft/class_2246", "field_10360", "SMOOTH_STONE");
-        addField("net/minecraft/class_2246", "field_10467", "SMOOTH_SANDSTONE");
-        addField("net/minecraft/class_2246", "field_10483", "SMOOTH_RED_SANDSTONE");
-        addField("net/minecraft/class_2246", "field_9978", "SMOOTH_QUARTZ");
-        addField("net/minecraft/class_2246", "field_10490", "YELLOW_WOOL");
-        addField("net/minecraft/class_2246", "field_10028", "LIME_WOOL");
-        addField("net/minecraft/class_2246", "field_10459", "PINK_WOOL");
-        addField("net/minecraft/class_2246", "field_10423", "GRAY_WOOL");
-        addField("net/minecraft/class_2246", "field_10222", "LIGHT_GRAY_WOOL");
-        addField("net/minecraft/class_2246", "field_10619", "CYAN_WOOL");
-        addField("net/minecraft/class_2246", "field_10259", "PURPLE_WOOL");
-        addField("net/minecraft/class_2246", "field_10514", "BLUE_WOOL");
-        addField("net/minecraft/class_2246", "field_10113", "BROWN_WOOL");
-        addField("net/minecraft/class_2246", "field_10170", "GREEN_WOOL");
-        addField("net/minecraft/class_2246", "field_10314", "RED_WOOL");
-        addField("net/minecraft/class_2246", "field_10146", "BLACK_WOOL");
-        addField("net/minecraft/class_2246", "field_10153", "QUARTZ_BLOCK");
-        addField("net/minecraft/class_2246", "field_10286", "PURPUR_BLOCK");
-
         // EntitySelector
         addField("net/minecraft/class_1301", "field_6154", "ENTITY_STILL_ALIVE");
         addField("net/minecraft/class_1301", "field_6157", "ENTITY_STILL_ALIVE");
 
+        // Items
+        addField("net/minecraft/class_2246", "field_10124", "AIR");
+        addField("net/minecraft/class_2246", "field_20412", "COBBLESTONE");
+        addField("net/minecraft/class_2246", "field_20390", "BRICKS");
+        addField("net/minecraft/class_2246", "field_8342", "BRICK_SLAB");
+        addField("net/minecraft/class_2246", "field_8280", "GLASS");
+        addField("net/minecraft/class_2246", "field_8705", "WATER_BUCKET");
+
         // Blocks
         addField("net/minecraft/class_1802", "field_8162", "AIR");
-        addField("net/minecraft/class_1802", "field_20390", "BRICKS");
-        addField("net/minecraft/class_1802", "field_8342", "BRICK_SLAB");
-        addField("net/minecraft/class_1802", "field_8280", "GLASS");
-        addField("net/minecraft/class_1802", "field_8705", "WATER_BUCKET");
+        addField("net/minecraft/class_1802", "field_10445", "COBBLESTONE");
+        addField("net/minecraft/class_1802", "field_10340", "STONE");
+        addField("net/minecraft/class_1802", "field_10474", "GRANITE");
+        addField("net/minecraft/class_1802", "field_10508", "DIORITE");
+        addField("net/minecraft/class_1802", "field_10115", "ANDESITE");
+        addField("net/minecraft/class_1802", "field_10219", "GRASS_BLOCK");
+        addField("net/minecraft/class_1802", "field_10566", "DIRT");
+        addField("net/minecraft/class_1802", "field_10253", "COARSE_DIRT");
+        addField("net/minecraft/class_1802", "field_10520", "PODZOL");
+        addField("net/minecraft/class_1802", "field_10161", "OAK_PLANKS");
+        addField("net/minecraft/class_1802", "field_9975", "SPRUCE_PLANKS");
+        addField("net/minecraft/class_1802", "field_10148", "BIRCH_PLANKS");
+        addField("net/minecraft/class_1802", "field_10334", "JUNGLE_PLANKS");
+        addField("net/minecraft/class_1802", "field_10218", "ACACIA_PLANKS");
+        addField("net/minecraft/class_1802", "field_42751", "CHERRY_PLANKS");
+        addField("net/minecraft/class_1802", "field_10075", "DARK_OAK_PLANKS");
+        addField("net/minecraft/class_1802", "field_54734", "PALE_OAK_WOOD");
+        addField("net/minecraft/class_1802", "field_54735", "PALE_OAK_PLANKS");
+        addField("net/minecraft/class_1802", "field_37577", "MANGROVE_PLANKS");
+        addField("net/minecraft/class_1802", "field_40294", "BAMBOO_PLANKS");
+        addField("net/minecraft/class_1802", "field_22126", "CRIMSON_PLANKS");
+        addField("net/minecraft/class_1802", "field_22127", "WARPED_PLANKS");
+        addField("net/minecraft/class_1802", "field_10033", "GLASS");
+        addField("net/minecraft/class_1802", "field_9979", "SANDSTONE");
+        addField("net/minecraft/class_1802", "field_10344", "RED_SANDSTONE");
+        addField("net/minecraft/class_1802", "field_10104", "BRICKS");
+        addField("net/minecraft/class_1802", "field_10056", "STONE_BRICKS");
+        addField("net/minecraft/class_1802", "field_10266", "NETHER_BRICKS");
+        addField("net/minecraft/class_1802", "field_9986", "RED_NETHER_BRICKS");
+        addField("net/minecraft/class_1802", "field_10462", "END_STONE_BRICKS");
+        addField("net/minecraft/class_1802", "field_10360", "SMOOTH_STONE");
+        addField("net/minecraft/class_1802", "field_10467", "SMOOTH_SANDSTONE");
+        addField("net/minecraft/class_1802", "field_10483", "SMOOTH_RED_SANDSTONE");
+        addField("net/minecraft/class_1802", "field_9978", "SMOOTH_QUARTZ");
+        addField("net/minecraft/class_1802", "field_10490", "YELLOW_WOOL");
+        addField("net/minecraft/class_1802", "field_10028", "LIME_WOOL");
+        addField("net/minecraft/class_1802", "field_10459", "PINK_WOOL");
+        addField("net/minecraft/class_1802", "field_10423", "GRAY_WOOL");
+        addField("net/minecraft/class_1802", "field_10222", "LIGHT_GRAY_WOOL");
+        addField("net/minecraft/class_1802", "field_10619", "CYAN_WOOL");
+        addField("net/minecraft/class_1802", "field_10259", "PURPLE_WOOL");
+        addField("net/minecraft/class_1802", "field_10514", "BLUE_WOOL");
+        addField("net/minecraft/class_1802", "field_10113", "BROWN_WOOL");
+        addField("net/minecraft/class_1802", "field_10170", "GREEN_WOOL");
+        addField("net/minecraft/class_1802", "field_10314", "RED_WOOL");
+        addField("net/minecraft/class_1802", "field_10146", "BLACK_WOOL");
+        addField("net/minecraft/class_1802", "field_10153", "QUARTZ_BLOCK");
+        addField("net/minecraft/class_1802", "field_10286", "PURPUR_BLOCK");
 
         // ItemStack
         addField("net/minecraft/class_1799", "field_8037", "EMPTY");
