@@ -11,6 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -170,6 +171,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_238", AABB.class); // Box
         addClass("net/minecraft/class_3610", FluidState.class);
         addClass("net/minecraft/class_3611", Fluid.class);
+        addClass("net/minecraft/class_9331", DataComponentType.class); // DataComponentType
         addClass("net/minecraft/class_9334", DataComponents.class); // DataComponentTypes
 
         // Fabric API
