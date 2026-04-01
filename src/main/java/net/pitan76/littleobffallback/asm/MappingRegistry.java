@@ -53,6 +53,8 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.saveddata.SavedData;
+import net.minecraft.world.level.storage.SavedDataStorage;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -194,6 +196,8 @@ public class MappingRegistry {
         addClass("net/minecraft/class_5348", FormattedText.class); // StringVisitable
         addClass("net/minecraft/class_2520", Tag.class); // NbtElement
         addClass("net/minecraft/class_2499", ListTag.class); // NbtList
+        addClass("net/minecraft/class_26", SavedDataStorage.class); // PersistentStateManager
+        addClass("net/minecraft/class_18", SavedData.class); // PersistentState
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
