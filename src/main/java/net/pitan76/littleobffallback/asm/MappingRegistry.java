@@ -173,6 +173,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_3611", Fluid.class);
         addClass("net/minecraft/class_9331", DataComponentType.class); // DataComponentType
         addClass("net/minecraft/class_9334", DataComponents.class); // DataComponentTypes
+        addClass("net/minecraft/class_9331$class_9332", DataComponentType.Builder.class); // DataComponentType$Builder
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
@@ -237,6 +238,9 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_2561", "method_43471", "translatable");
         addMethod("net/minecraft/class_2561", "method_43469", "translatableWithArgs");
         addMethod("net/minecraft/class_2561", "method_43473", "empty");
+
+        // DataComponentType
+        addMethod("net/minecraft/class_9331", "method_57873", "builder"); // builder
 
         // NonNullList
         addMethod("net/minecraft/class_2371", "method_10211", "create");
