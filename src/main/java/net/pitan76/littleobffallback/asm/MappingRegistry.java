@@ -473,7 +473,7 @@ public class MappingRegistry {
 
         // ChunkPos
         addMethod("net/minecraft/class_1923", "net/minecraft/class_2338#<init>(III)V", "containing");
-//        addMethod("net/minecraft/class_1923", "net/minecraft/core/BlockPos#<init>(III)V", "containing");
+        addMethod("net/minecraft/class_1923", "net/minecraft/core/BlockPos#<init>(III)V", "containing");
 
         // EntitySelector
         addField("net/minecraft/class_1301", "field_6154", "ENTITY_STILL_ALIVE");
