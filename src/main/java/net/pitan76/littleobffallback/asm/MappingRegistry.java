@@ -303,6 +303,8 @@ public class MappingRegistry {
 
         // ServerPlayer (ServerPlayerEntity)
         addMethod("net/minecraft/class_3222", "method_5667", "getUUID");
+        addMethod("net/minecraft/class_3222", "method_19538", "position");
+        addMethod("net/minecraft/class_3222", "method_24515", "blockPosition");
 
         // Component
         addMethod("net/minecraft/class_2561", "method_10866", "getStyle");
