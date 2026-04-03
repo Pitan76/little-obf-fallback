@@ -68,7 +68,7 @@ public class LittleObfFallbackRemapper extends Remapper {
             String superClass = getSuperClass(owner);
             if (superClass != null) {
                 String mappedFromSuper = mapMethodName(superClass, name, descriptor);
-                if (mappedFromSuper != null) {
+                if (mappedFromSuper != null && !mappedFromSuper.equals(name)) {
                     return mappedFromSuper;
                 }
             }
@@ -77,7 +77,7 @@ public class LittleObfFallbackRemapper extends Remapper {
             if (interfaces != null) {
                 for (String iface : interfaces) {
                     String mappedFromInterface = mapMethodName(iface, name, descriptor);
-                    if (mappedFromInterface != null) {
+                    if (mappedFromInterface != null && !mappedFromInterface.equals(name)) {
                         return mappedFromInterface;
                     }
                 }
