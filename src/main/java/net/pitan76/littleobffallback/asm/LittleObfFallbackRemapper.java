@@ -65,6 +65,25 @@ public class LittleObfFallbackRemapper extends Remapper {
 
     @Override
     public String mapMethodName(String owner, String name, String descriptor) {
+//        if (owner != null && name != null) {
+//            // ディスクリプタ付きでの完全一致
+//            if (descriptor != null) {
+//                String descKey = owner + "#" + name + descriptor;
+//                String mappedDesc = MappingRegistry.METHOD_MAP.get(descKey);
+//                if (mappedDesc != null) {
+//                    isChanged = true;
+//                    return mappedDesc;
+//                }
+//            }
+//
+//            // メソッド名のみ
+//            String key = owner + "#" + name;
+//            String mapped = MappingRegistry.METHOD_MAP.get(key);
+//            if (mapped != null) {
+//                isChanged = true;
+//                return mapped;
+//            }
+//        }
         if (name != null) {
             String globalMapped = MappingRegistry.GLOBAL_METHOD_MAP.get(name);
             if (globalMapped != null) {
