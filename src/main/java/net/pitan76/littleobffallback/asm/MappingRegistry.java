@@ -30,6 +30,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.stats.StatType;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -216,6 +218,9 @@ public class MappingRegistry {
         addClass("net/minecraft/class_5568", EntityAccess.class); // EntityLike
         addClass("net/minecraft/class_2760", Half.class); // Half (BlockHalf)
         addClass("net/minecraft/class_2778", StairsShape.class); // StairsShape (StairShape)
+        addClass("net/minecraft/class_3468", Stats.class); // Stats
+        addClass("net/minecraft/class_3448", StatType.class); // StatType
+
 
 
 
@@ -587,5 +592,12 @@ public class MappingRegistry {
         addField("net/minecraft/class_2778", "field_12713", "INNER_RIGHT");
         addField("net/minecraft/class_2778", "field_12708", "OUTER_LEFT");
         addField("net/minecraft/class_2778", "field_12709", "OUTER_RIGHT");
+
+        addField("net/minecraft/class_3468", "field_15427", "BLOCK_MINED");
+        addField("net/minecraft/class_3468", "field_15370", "ITEM_CRAFTED");
+        addField("net/minecraft/class_3468", "field_15372", "ITEM_USED");
+        addField("net/minecraft/class_3468", "field_15383", "ITEM_BROKEN");
+        addField("net/minecraft/class_3468", "field_15392", "ITEM_PICKED_UP");
+        addField("net/minecraft/class_3468", "field_15405", "ITEM_DROPPED");
     }
 }
