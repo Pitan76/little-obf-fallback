@@ -29,7 +29,7 @@ public class LittleObfFallbackTransformer2 implements ClassFileTransformer {
             ClassReader reader = new ClassReader(classfileBuffer);
             ClassWriter writer = new ClassWriter(reader, ClassWriter.COMPUTE_MAXS);
 
-            LittleObfFallbackRemapper remapper = new LittleObfFallbackRemapper();
+            LittleObfFallbackRemapper remapper = new LittleObfFallbackRemapper(loader);
 
             ClassRemapper classRemapper = new ClassRemapper(writer, remapper);
             reader.accept(classRemapper, 0);

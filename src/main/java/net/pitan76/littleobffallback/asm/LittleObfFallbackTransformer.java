@@ -21,8 +21,9 @@ public class LittleObfFallbackTransformer implements Consumer<ClassNode> {
                 name.startsWith("net/pitan76/mcpitanlib/")) {
             return;
         }
-        
-        LittleObfFallbackRemapper remapper = new LittleObfFallbackRemapper();
+
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        LittleObfFallbackRemapper remapper = new LittleObfFallbackRemapper(loader);
 
         ClassNode remapped = new ClassNode();
         ClassRemapper classRemapper = new ClassRemapper(remapped, remapper);

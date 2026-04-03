@@ -6,6 +6,7 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.Remapper;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,9 +16,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class LittleObfFallbackRemapper extends Remapper {
 
     public boolean isChanged = false;
+    private final ClassLoader loader;
 
-    public LittleObfFallbackRemapper() {
+    public LittleObfFallbackRemapper(ClassLoader loader) {
         super(Opcodes.ASM9);
+        this.loader = loader;
     }
 
     @Override
@@ -94,13 +97,18 @@ public class LittleObfFallbackRemapper extends Remapper {
 
     private String getSuperClass(String className) {
         return superClassCache.computeIfAbsent(className, key -> {
-            byte[] classBytes = classMap.get(key);
-            if (classBytes == null) return null;
+            ClassLoader targetLoader = (this.loader != null) ? this.loader : ClassLoader.getSystemClassLoader();
 
-            ClassReader classReader = new ClassReader(classBytes);
-            SuperClassVisitor visitor = new SuperClassVisitor();
-            classReader.accept(visitor, ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
-            return visitor.getSuperClassName();
+            try (InputStream is = targetLoader.getResourceAsStream(key + ".class")) {
+                if (is == null) return null;
+
+                ClassReader classReader = new ClassReader(is);
+                SuperClassVisitor visitor = new SuperClassVisitor();
+                classReader.accept(visitor, ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
+                return visitor.getSuperClassName();
+            } catch (Exception e) {
+                return null;
+            }
         });
     }
 
@@ -119,13 +127,18 @@ public class LittleObfFallbackRemapper extends Remapper {
 
     private String[] getInterfaces(String className) {
         return interfaceCache.computeIfAbsent(className, key -> {
-            byte[] classBytes = classMap.get(key);
-            if (classBytes == null) return null;
+            ClassLoader targetLoader = (this.loader != null) ? this.loader : ClassLoader.getSystemClassLoader();
 
-            ClassReader classReader = new ClassReader(classBytes);
-            InterfaceVisitor visitor = new InterfaceVisitor();
-            classReader.accept(visitor, ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
-            return visitor.getInterfaces();
+            try (InputStream is = targetLoader.getResourceAsStream(key + ".class")) {
+                if (is == null) return null;
+
+                ClassReader classReader = new ClassReader(is);
+                InterfaceVisitor visitor = new InterfaceVisitor();
+                classReader.accept(visitor, ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
+                return visitor.getInterfaces();
+            } catch (Exception e) {
+                return null;
+            }
         });
     }
 
