@@ -17,7 +17,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
@@ -50,6 +49,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.entity.EntityAccess;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
@@ -211,6 +211,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_2392", ParticleType.class); // ItemStackParticleEffect (ParticleType<ItemParticleOption>)
         addClass("net/minecraft/class_1268", InteractionHand.class); // Hand
         addClass("net/minecraft/class_1923", ChunkPos.class); // Hand
+        addClass("net/minecraft/class_5568", EntityAccess.class); // EntityLike
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
@@ -232,6 +233,9 @@ public class MappingRegistry {
                 isServerOnly = true;
             }
         }
+
+        // EntityLike
+        addMethod("net/minecraft/class_5568", "method_5667", "getUUID");
 
         addMethod("net/minecraft/class_1799", "method_7909", "getItem");
         addMethod("net/minecraft/class_1792", "method_7854", "getDefaultInstance");
@@ -463,6 +467,10 @@ public class MappingRegistry {
         // AbstractContainerMenu (ScreenHandler)
         addMethod("net/minecraft/class_1703", "method_34254", "setCarried"); // setCursorStack
         addMethod("net/minecraft/class_1703", "method_34255", "getCarried"); // getCursorStack
+
+        // ChunkPos
+        addMethod("net/minecraft/class_1923", "net/minecraft/class_2338#<init>(III)V", "containing");
+        addMethod("net/minecraft/class_1923", "net/minecraft/core/BlockPos#<init>(III)V", "containing");
 
         // EntitySelector
         addField("net/minecraft/class_1301", "field_6154", "ENTITY_STILL_ALIVE");
