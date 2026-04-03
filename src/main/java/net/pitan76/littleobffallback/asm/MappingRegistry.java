@@ -364,6 +364,13 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1297", "method_18798", "getDeltaMovement");
         addMethod("net/minecraft/class_1297", "method_18799", "setDeltaMovement");
         addMethod("net/minecraft/class_1297", "method_18800", "setDeltaMovement");
+        addMethod("net/minecraft/class_1297", "method_5805", "isAlive");
+        addMethod("net/minecraft/class_1297", "method_23317", "getX");
+        addMethod("net/minecraft/class_1297", "method_23318", "getY");
+        addMethod("net/minecraft/class_1297", "method_23321", "getZ");
+
+
+        // LivingEntity
         addMethod("net/minecraft/class_1309", "method_5805", "isAlive");
 
         // BlockEntity
