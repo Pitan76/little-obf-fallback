@@ -74,6 +74,9 @@ public class MappingRegistry {
     public static final Map<String, String> FIELD_MAP = new ConcurrentHashMap<>();
     public static final Map<String, String> METHOD_MAP = new ConcurrentHashMap<>();
 
+    public static final Map<String, String> GLOBAL_FIELD_MAP = new ConcurrentHashMap<>();
+    public static final Map<String, String> GLOBAL_METHOD_MAP = new ConcurrentHashMap<>();
+
     public static boolean isServerOnly = false;
 
     /**
@@ -97,6 +100,7 @@ public class MappingRegistry {
      */
     public static void addField(String ownerIntermediary, String fieldIntermediary, String fieldMojmap) {
         FIELD_MAP.put(ownerIntermediary.replace('.', '/') + "#" + fieldIntermediary, fieldMojmap);
+        GLOBAL_FIELD_MAP.put(fieldIntermediary, fieldMojmap);
     }
 
     /**
@@ -107,6 +111,7 @@ public class MappingRegistry {
      */
     public static void addMethod(String ownerIntermediary, String methodIntermediary, String methodMojmap) {
         METHOD_MAP.put(ownerIntermediary.replace('.', '/') + "#" + methodIntermediary, methodMojmap);
+        GLOBAL_METHOD_MAP.put(methodIntermediary, methodMojmap);
     }
 
     /**
@@ -118,6 +123,7 @@ public class MappingRegistry {
      */
     public static void addMethodWithDesc(String ownerIntermediary, String methodIntermediary, String desc, String methodMojmap) {
         METHOD_MAP.put(ownerIntermediary.replace('.', '/') + "#" + methodIntermediary + desc, methodMojmap);
+        GLOBAL_METHOD_MAP.put(methodIntermediary, methodMojmap);
     }
 
     /**

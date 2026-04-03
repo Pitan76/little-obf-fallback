@@ -36,12 +36,28 @@ public class LittleObfFallbackRemapper extends Remapper {
 
     @Override
     public String mapFieldName(String owner, String name, String descriptor) {
-        if (owner != null && name != null) {
-            String key = owner + "#" + name;
-            String mapped = MappingRegistry.FIELD_MAP.get(key);
-            if (mapped != null) {
+//        if (owner != null && name != null) {
+//            String key = owner + "#" + name;
+//            String mapped = MappingRegistry.FIELD_MAP.get(key);
+//            if (mapped != null) {
+//                isChanged = true;
+//                return mapped;
+//            }
+//        }
+        if (name != null) {
+            String globalMapped = MappingRegistry.GLOBAL_FIELD_MAP.get(name);
+            if (globalMapped != null) {
                 isChanged = true;
-                return mapped;
+                return globalMapped;
+            }
+
+            if (owner != null) {
+                String key = owner + "#" + name;
+                String mapped = MappingRegistry.FIELD_MAP.get(key);
+                if (mapped != null) {
+                    isChanged = true;
+                    return mapped;
+                }
             }
         }
         return super.mapFieldName(owner, name, descriptor);
@@ -49,40 +65,45 @@ public class LittleObfFallbackRemapper extends Remapper {
 
     @Override
     public String mapMethodName(String owner, String name, String descriptor) {
-        if (owner != null && name != null) {
-            // ディスクリプタ付きでの完全一致
-            if (descriptor != null) {
-                String descKey = owner + "#" + name + descriptor;
-                String mappedDesc = MappingRegistry.METHOD_MAP.get(descKey);
-                if (mappedDesc != null) {
-                    isChanged = true;
-                    return mappedDesc;
-                }
-            }
-
-            // メソッド名のみ
-            String key = owner + "#" + name;
-            String mapped = MappingRegistry.METHOD_MAP.get(key);
-            if (mapped != null) {
+        if (name != null) {
+            String globalMapped = MappingRegistry.GLOBAL_METHOD_MAP.get(name);
+            if (globalMapped != null) {
                 isChanged = true;
-                return mapped;
+                return globalMapped;
             }
 
-            // 親クラスのメソッドもチェック
-            String superClass = getSuperClass(owner);
-            if (superClass != null) {
-                String mappedFromSuper = mapMethodName(superClass, name, descriptor);
-                if (mappedFromSuper != null && !mappedFromSuper.equals(name)) {
-                    return mappedFromSuper;
+            if (owner != null) {
+                if (descriptor != null) {
+                    String descKey = owner + "#" + name + descriptor;
+                    String mappedDesc = MappingRegistry.METHOD_MAP.get(descKey);
+                    if (mappedDesc != null) {
+                        isChanged = true;
+                        return mappedDesc;
+                    }
                 }
-            }
 
-            String[] interfaces = getInterfaces(owner);
-            if (interfaces != null) {
-                for (String iface : interfaces) {
-                    String mappedFromInterface = mapMethodName(iface, name, descriptor);
-                    if (mappedFromInterface != null && !mappedFromInterface.equals(name)) {
-                        return mappedFromInterface;
+                String key = owner + "#" + name;
+                String mapped = MappingRegistry.METHOD_MAP.get(key);
+                if (mapped != null) {
+                    isChanged = true;
+                    return mapped;
+                }
+
+                String superClass = getSuperClass(owner);
+                if (superClass != null) {
+                    String mappedFromSuper = mapMethodName(superClass, name, descriptor);
+                    if (mappedFromSuper != null && !mappedFromSuper.equals(name)) {
+                        return mappedFromSuper;
+                    }
+                }
+
+                String[] interfaces = getInterfaces(owner);
+                if (interfaces != null) {
+                    for (String iface : interfaces) {
+                        String mappedFromInterface = mapMethodName(iface, name, descriptor);
+                        if (mappedFromInterface != null && !mappedFromInterface.equals(name)) {
+                            return mappedFromInterface;
+                        }
                     }
                 }
             }
