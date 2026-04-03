@@ -301,6 +301,9 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_2960", "method_12838", "bySeparator"); // splitOn
         addMethod("net/minecraft/class_2960", "method_60935", "tryBySeparator"); // trySplitOn
 
+        // ServerPlayer (ServerPlayerEntity)
+        addMethod("net/minecraft/class_3222", "method_5667", "getUUID");
+
         // Component
         addMethod("net/minecraft/class_2561", "method_10866", "getStyle");
         addMethod("net/minecraft/class_2561", "method_10851", "getContents");
@@ -470,7 +473,7 @@ public class MappingRegistry {
 
         // ChunkPos
         addMethod("net/minecraft/class_1923", "net/minecraft/class_2338#<init>(III)V", "containing");
-        addMethod("net/minecraft/class_1923", "net/minecraft/core/BlockPos#<init>(III)V", "containing");
+//        addMethod("net/minecraft/class_1923", "net/minecraft/core/BlockPos#<init>(III)V", "containing");
 
         // EntitySelector
         addField("net/minecraft/class_1301", "field_6154", "ENTITY_STILL_ALIVE");
