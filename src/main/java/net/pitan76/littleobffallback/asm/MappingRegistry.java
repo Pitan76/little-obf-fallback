@@ -48,7 +48,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.level.entity.EntityAccess;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
@@ -212,6 +214,10 @@ public class MappingRegistry {
         addClass("net/minecraft/class_1268", InteractionHand.class); // Hand
         addClass("net/minecraft/class_1923", ChunkPos.class); // Hand
         addClass("net/minecraft/class_5568", EntityAccess.class); // EntityLike
+        addClass("net/minecraft/class_2760", Half.class); // Half (BlockHalf)
+        addClass("net/minecraft/class_2778", StairsShape.class); // StairsShape (StairShape)
+
+
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
