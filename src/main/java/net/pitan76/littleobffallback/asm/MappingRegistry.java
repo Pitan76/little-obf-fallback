@@ -21,6 +21,7 @@ import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.nbt.*;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -46,6 +47,10 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -239,6 +244,11 @@ public class MappingRegistry {
         addClass("net/minecraft/class_3419", SoundSource.class); // SoundCategory
         addClass("net/minecraft/class_3414", SoundEvent.class); // SoundEvent
         addClass("net/minecraft/class_3417", SoundEvents.class); // SoundEvents
+        addClass("net/minecraft/class_3955", CraftingRecipe.class); // CraftingRecipe
+        addClass("net/minecraft/class_7710", RecipeCategory.class); // CraftingRecipeCategory
+        addClass("net/minecraft/class_3956", RecipeType.class); // RecipeType
+        addClass("net/minecraft/class_1869", ShapedRecipe.class); // ShapedRecipe
+        addClass("net/minecraft/class_1867", ShapelessRecipe.class); // ShapelessRecipe
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
