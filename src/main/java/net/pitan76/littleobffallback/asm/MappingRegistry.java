@@ -247,6 +247,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_3956", RecipeType.class); // RecipeType
         addClass("net/minecraft/class_1869", ShapedRecipe.class); // ShapedRecipe
         addClass("net/minecraft/class_1867", ShapelessRecipe.class); // ShapelessRecipe
+        addClass("net/minecraft/class_1856", Ingredient.class); // Ingredient
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
