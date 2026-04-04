@@ -21,9 +21,7 @@ import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
+import net.minecraft.nbt.*;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
@@ -214,6 +212,13 @@ public class MappingRegistry {
         addClass("net/minecraft/class_5348", FormattedText.class); // StringVisitable
         addClass("net/minecraft/class_2520", Tag.class); // NbtElement
         addClass("net/minecraft/class_2499", ListTag.class); // NbtList
+        addClass("net/minecraft/class_2519", StringTag.class); // NbtString
+        addClass("net/minecraft/class_2497", IntTag.class); // NbtInt
+        addClass("net/minecraft/class_2489", DoubleTag.class); // NbtDouble
+        addClass("net/minecraft/class_2503", LongTag.class); // NbtLong
+        addClass("net/minecraft/class_2494", FloatTag.class); // NbtFloat
+        addClass("net/minecraft/class_2481", ByteTag.class); // NbtByte
+
         addClass("net/minecraft/class_26", SavedDataStorage.class); // PersistentStateManager
         addClass("net/minecraft/class_18", SavedData.class); // PersistentState
         addClass("net/minecraft/class_239", HitResult.class); // HitResult
