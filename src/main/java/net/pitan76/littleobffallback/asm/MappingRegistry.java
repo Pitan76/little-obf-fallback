@@ -631,9 +631,9 @@ public class MappingRegistry {
         addField("net/minecraft/class_3419", "field_15246", "VOICE");
 
         // SoundEvents
-        addField("net/minecraft/class_3417", "field_14562", "ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR");
-        addField("net/minecraft/class_3417", "field_14670", "ENTITY_ZOMBIE_ATTACK_IRON_DOOR");
-        addField("net/minecraft/class_3417", "field_14742", "ENTITY_ZOMBIE_BREAK_WOODEN_DOOR");
-        addField("net/minecraft/class_3417", "field_14727", "BLOCK_ANVIL_FALL");
+        addField("net/minecraft/class_3417", "field_14562", "ZOMBIE_ATTACK_WOODEN_DOOR"); // ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR
+        addField("net/minecraft/class_3417", "field_14670", "ZOMBIE_ATTACK_IRON_DOOR"); // ENTITY_ZOMBIE_ATTACK_IRON_DOOR
+        addField("net/minecraft/class_3417", "field_14742", "ZOMBIE_BREAK_WOODEN_DOOR"); // ENTITY_ZOMBIE_BREAK_WOODEN_DOOR
+        addField("net/minecraft/class_3417", "field_14727", "ANVIL_FALL"); // BLOCK_ANVIL_FALL
     }
 }
