@@ -276,6 +276,19 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1735", "method_7677", "getItem");
         addMethod("net/minecraft/class_1735", "method_7680", "mayPlace");
 
+        // CompoundTag (NbtCompound)
+        addMethod("net/minecraft/class_2487", "method_10566", "put");
+        addMethod("net/minecraft/class_2487", "method_10567", "putByte");
+        addMethod("net/minecraft/class_2487", "method_10575", "putShort");
+        addMethod("net/minecraft/class_2487", "method_10569", "putInt");
+        addMethod("net/minecraft/class_2487", "method_10544", "putLong");
+        addMethod("net/minecraft/class_2487", "method_10548", "putFloat");
+        addMethod("net/minecraft/class_2487", "method_10549", "putDouble");
+        addMethod("net/minecraft/class_2487", "method_10582", "putString");
+        addMethod("net/minecraft/class_2487", "method_10580", "get");
+        addMethod("net/minecraft/class_2487", "method_10545", "contains");
+        addMethod("net/minecraft/class_2487", "method_10562", "getCompoundOrEmpty");
+
         // Container (Inventory)
         addMethod("net/minecraft/class_1263", "method_5439", "getContainerSize");
         addMethod("net/minecraft/class_1263", "method_5442", "isEmpty");
