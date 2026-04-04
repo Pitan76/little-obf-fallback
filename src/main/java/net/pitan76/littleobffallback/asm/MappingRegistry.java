@@ -47,10 +47,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.ShapedRecipe;
-import net.minecraft.world.item.crafting.ShapelessRecipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -244,6 +241,7 @@ public class MappingRegistry {
         addClass("net/minecraft/class_3419", SoundSource.class); // SoundCategory
         addClass("net/minecraft/class_3414", SoundEvent.class); // SoundEvent
         addClass("net/minecraft/class_3417", SoundEvents.class); // SoundEvents
+        addClass("net/minecraft/class_1860", Recipe.class); // Recipe
         addClass("net/minecraft/class_3955", CraftingRecipe.class); // CraftingRecipe
         addClass("net/minecraft/class_7710", RecipeCategory.class); // CraftingRecipeCategory
         addClass("net/minecraft/class_3956", RecipeType.class); // RecipeType
