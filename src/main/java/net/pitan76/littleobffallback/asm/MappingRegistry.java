@@ -267,7 +267,7 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1799", "method_7909", "getItem");
         addMethod("net/minecraft/class_1792", "method_7854", "getDefaultInstance");
         addMethod("net/minecraft/class_1792", "method_7882", "getDefaultMaxStackSize");
-        addMethod("net/minecraft/class_4970$class_4971", "method_26204", "getBlock");
+
         addMethod("net/minecraft/class_2248", "method_9541", "box");
         addMethod("net/minecraft/class_259", "method_1073", "empty");
         addMethod("net/minecraft/class_259", "method_1077", "block");
@@ -420,11 +420,15 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_2248", "method_9564", "defaultBlockState");
 
         // BlockState
-        addMethod("net/minecraft/class_2680", "method_26204", "getBlock");
-        addMethod("net/minecraft/class_2680", "method_26227", "getFluidState");
         addMethod("net/minecraft/class_2680", "method_11654", "getValue");
         addMethod("net/minecraft/class_2680", "method_11657", "setValue");
         addMethod("net/minecraft/class_2680", "method_28498", "hasProperty");
+
+        // BlockBehaviour.BlockStateBase
+        addMethod("net/minecraft/class_4970$class_4971", "method_26204", "getBlock");
+        addMethod("net/minecraft/class_4970$class_4971", "method_26196", "getMenuProvider");
+        addMethod("net/minecraft/class_4970$class_4971", "method_26204", "getBlock");
+        addMethod("net/minecraft/class_4970$class_4971", "method_26227", "getFluidState");
 
         // BlockBehaviour
         addMethod("net/minecraft/class_4970", "method_8389", "asItem");
