@@ -9,9 +9,39 @@ import java.lang.instrument.Instrumentation;
 public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
     @Override
     public void onPreLaunch() {
+        // MCPitanLibを前提とするmodをリストにする
+//        List<ModContainer> targetMods = FabricLoader.getInstance().getAllMods().stream()
+//                .filter(mod -> mod.getMetadata().getDependencies().stream().anyMatch(
+//                        depend -> depend.getModId().equals("mcpitanlib"))).toList();
+//
+//        targetMods.forEach(container -> System.out.println("[LittleObfFallback] Detected mod: " + container.getMetadata().getId()));
+//
+//        List<String> targetPackages = targetMods.stream().map(mod -> {
+//            for (EntrypointContainer<Object> container : FabricLoader.getInstance().getEntrypointContainers("main", Object.class)) {
+//                if (container.getProvider().getMetadata().getId().equals(mod.getMetadata().getId())) {
+//                    String definition = container.getDefinition().replace('.', '/');;
+//
+//                    // class名を取り除く
+//                    String packageName = definition.contains("/") ? definition.substring(0, definition.lastIndexOf('/')) : definition;
+//
+//                    // エントリーポイントのパッケージ名から、"/fabric", "/forge", "/neoforge"で終わる部分を削除
+//                    if (packageName.endsWith("/fabric") || packageName.endsWith("/forge") || packageName.endsWith("/neoforge")) {
+//                        packageName = packageName.substring(0, packageName.lastIndexOf('/'));
+//                    }
+//
+////                    System.out.printf("[LittleObfFallback] Target mod: %s, Entry point class: %s%n", mod.getMetadata().getId(), packageName);
+//                    return packageName + "/";
+//                }
+//            }
+//            return "";
+//        }).toList();
+
+        Config.init();
+        if (!Config.isEnabled()) return;
+
         Instrumentation inst = ByteBuddyAgent.install();
         System.out.println("[LittleObfFallback] PreLaunch: Instrumentation attached");
-        inst.addTransformer(new LittleObfFallbackTransformer2());
+        inst.addTransformer(new LittleObfFallbackTransformer2(Config.getTargetPackages()));
         System.out.println("[LittleObfFallback] Global ASM Transformer injected successfully.");
     }
 
