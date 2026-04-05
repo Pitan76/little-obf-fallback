@@ -40,9 +40,12 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
         if (!Config.isEnabled()) return;
 
         Instrumentation inst = ByteBuddyAgent.install();
+        // 時間を計測してみる
+        int startTime = (int) System.currentTimeMillis();
         System.out.println("[LittleObfFallback] PreLaunch: Instrumentation attached");
         inst.addTransformer(new LittleObfFallbackTransformer2(Config.getTargetPackages()));
-        System.out.println("[LittleObfFallback] Global ASM Transformer injected successfully.");
+        int endTime = (int) System.currentTimeMillis();
+        System.out.println("[LittleObfFallback] Global ASM Transformer injected successfully. Convert time: " + (endTime - startTime) + "ms.");
     }
 
 //        System.out.println("[LittleObfFallback] PreLaunch: Adding ClassTinkerers transformation");
