@@ -427,6 +427,9 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1297", "method_23318", "getY");
         addMethod("net/minecraft/class_1297", "method_23321", "getZ");
         addMethod("net/minecraft/class_1297", "method_5735", "getDirection");
+        addMethod("net/minecraft/class_1297", "method_73183", "level");
+        addMethod("net/minecraft/class_1297", "method_37908", "level");
+        addMethod("net/minecraft/class_1297", "method_19538", "position");
 
         // MathHelper (Mth)
         addMethod("net/minecraft/class_3532", "method_15369", "hsvToRgb");
