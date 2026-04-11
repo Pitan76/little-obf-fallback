@@ -47,6 +47,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import net.minecraft.world.entity.projectile.arrow.Arrow;
+import net.minecraft.world.entity.projectile.arrow.SpectralArrow;
+import net.minecraft.world.entity.projectile.hurtingprojectile.SmallFireball;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.Snowball;
 import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -156,9 +160,13 @@ public class MappingRegistry {
         addClass("net/minecraft/class_1571", Ghast.class); // GhastEntity
         addClass("net/minecraft/class_1593", Phantom.class); // PhantomEntity
         addClass("net/minecraft/class_1569", Enemy.class); // Monster
-        addClass("net/minecraft/class_1676", Projectile.class);
-        addClass("net/minecraft/class_1682", ThrowableProjectile.class);
-        addClass("net/minecraft/class_3857", ThrowableItemProjectile.class);
+        addClass("net/minecraft/class_1677", SmallFireball.class); // SmallFireballEntity
+        addClass("net/minecraft/class_1667", Arrow.class); // ArrowEntity
+        addClass("net/minecraft/class_1679", SpectralArrow.class); // SpectralArrowEntity
+        addClass("net/minecraft/class_1680", Snowball.class); // SnowballEntity
+        addClass("net/minecraft/class_1676", Projectile.class); // ProjectileEntity
+        addClass("net/minecraft/class_1682", ThrowableProjectile.class); // ThrownEntity
+        addClass("net/minecraft/class_3857", ThrowableItemProjectile.class); // ThrownItemEntity
         addClass("net/minecraft/class_1657", Player.class); // PlayerEntity
         addClass("net/minecraft/class_1297", Entity.class);
         addClass("net/minecraft/class_1299", EntityType.class);
@@ -258,6 +266,10 @@ public class MappingRegistry {
         addClass("net/minecraft/class_1867", ShapelessRecipe.class); // ShapelessRecipe
         addClass("net/minecraft/class_1856", Ingredient.class); // Ingredient
         addClass("net/minecraft/class_3532", Mth.class);
+        addClass("net/minecraft/class_1778", FireChargeItem.class);
+        addClass("net/minecraft/class_1744", ArrowItem.class);
+        addClass("net/minecraft/class_1825", SpectralArrowItem.class);
+        addClass("net/minecraft/class_1823", SnowballItem.class);
 
         // Fabric API
         addClass("net/fabricmc/fabric/api/transfer/v1/item/InventoryStorage", "net/fabricmc/fabric/api/transfer/v1/item/ContainerStorage"); // InventoryStorage
