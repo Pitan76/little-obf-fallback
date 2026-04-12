@@ -219,6 +219,8 @@ public class MappingRegistry {
         addClass("net/minecraft/class_3222", ServerPlayer.class); // ServerPlayerEntity
         addClass("net/minecraft/class_2189", AirBlock.class);
         addClass("net/minecraft/class_2404", LiquidBlock.class); // FluidBlock
+        addClass("net/minecraft/class_2526", TallGrassBlock.class); // ShortPlantBlock
+        addClass("net/minecraft/class_2311", DryVegetationBlock.class); // DeadBushBlock/DryVegetationBlock
         addClass("net/minecraft/class_2487", CompoundTag.class); // NbtCompound
         addClass("net/minecraft/class_1301", EntitySelector.class); // EntityPredicates
         addClass("net/minecraft/class_238", AABB.class); // Box
