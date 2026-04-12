@@ -38,11 +38,14 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.animal.AgeableWaterCreature;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.entity.monster.Slime;
+import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -164,6 +167,10 @@ public class MappingRegistry {
         addClass("net/minecraft/class_1667", Arrow.class); // ArrowEntity
         addClass("net/minecraft/class_1679", SpectralArrow.class); // SpectralArrowEntity
         addClass("net/minecraft/class_1680", Snowball.class); // SnowballEntity
+        addClass("net/minecraft/class_1621", Slime.class); // SlimeEntity
+        addClass("net/minecraft/class_1480", AgeableWaterCreature.class); // WaterCreatureEntity
+        addClass("net/minecraft/class_1314", PathfinderMob.class); // PathAwareEntity
+        addClass("net/minecraft/class_1646", Villager.class); // VillagerEntity
         addClass("net/minecraft/class_1676", Projectile.class); // ProjectileEntity
         addClass("net/minecraft/class_1682", ThrowableProjectile.class); // ThrownEntity
         addClass("net/minecraft/class_3857", ThrowableItemProjectile.class); // ThrownItemEntity
@@ -430,6 +437,7 @@ public class MappingRegistry {
         addMethod("net/minecraft/class_1297", "method_73183", "level");
         addMethod("net/minecraft/class_1297", "method_37908", "level");
         addMethod("net/minecraft/class_1297", "method_19538", "position");
+        addMethod("net/minecraft/class_1297", "method_5836", "getEyePosition");
 
         // MathHelper (Mth)
         addMethod("net/minecraft/class_3532", "method_15369", "hsvToRgb");
