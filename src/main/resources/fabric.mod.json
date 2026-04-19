@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "preLaunch": [
-      "net.pitan76.littleintermediaryfallback.littleintermediaryfallbackPreLaunch"
+      "net.pitan76.littleintermediaryfallback.LittleIntermediaryFallbackPreLaunch"
     ],
     "main": [
-      "net.pitan76.littleintermediaryfallback.littleintermediaryfallback"
+      "net.pitan76.littleintermediaryfallback.LittleIntermediaryFallback"
     ]
   },
   "accessWidener": "littleintermediaryfallback.accesswidener",
