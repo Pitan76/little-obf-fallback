@@ -1,4 +1,4 @@
-package net.pitan76.littleobffallback.asm;
+package net.pitan76.littleintermediaryfallback.asm;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;

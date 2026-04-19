@@ -1,12 +1,12 @@
-package net.pitan76.littleobffallback;
+package net.pitan76.littleintermediaryfallback;
 
 import net.bytebuddy.agent.ByteBuddyAgent;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
-import net.pitan76.littleobffallback.asm.LittleObfFallbackTransformer2;
+import net.pitan76.littleintermediaryfallback.asm.LittleIntermediaryFallbackTransformer2;
 
 import java.lang.instrument.Instrumentation;
 
-public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
+public class LittleIntermediaryFallbackPreLaunch implements PreLaunchEntrypoint {
     @Override
     public void onPreLaunch() {
         // MCPitanLibを前提とするmodをリストにする
@@ -14,7 +14,7 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
 //                .filter(mod -> mod.getMetadata().getDependencies().stream().anyMatch(
 //                        depend -> depend.getModId().equals("mcpitanlib"))).toList();
 //
-//        targetMods.forEach(container -> System.out.println("[LittleObfFallback] Detected mod: " + container.getMetadata().getId()));
+//        targetMods.forEach(container -> System.out.println("[LittleIntermediaryFallback] Detected mod: " + container.getMetadata().getId()));
 //
 //        List<String> targetPackages = targetMods.stream().map(mod -> {
 //            for (EntrypointContainer<Object> container : FabricLoader.getInstance().getEntrypointContainers("main", Object.class)) {
@@ -29,7 +29,7 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
 //                        packageName = packageName.substring(0, packageName.lastIndexOf('/'));
 //                    }
 //
-////                    System.out.printf("[LittleObfFallback] Target mod: %s, Entry point class: %s%n", mod.getMetadata().getId(), packageName);
+////                    System.out.printf("[LittleIntermediaryFallback] Target mod: %s, Entry point class: %s%n", mod.getMetadata().getId(), packageName);
 //                    return packageName + "/";
 //                }
 //            }
@@ -42,13 +42,13 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
         Instrumentation inst = ByteBuddyAgent.install();
         // 時間を計測してみる
         int startTime = (int) System.currentTimeMillis();
-        System.out.println("[LittleObfFallback] PreLaunch: Instrumentation attached");
-        inst.addTransformer(new LittleObfFallbackTransformer2(Config.getTargetPackages()));
+        System.out.println("[LittleIntermediaryFallback] PreLaunch: Instrumentation attached");
+        inst.addTransformer(new LittleIntermediaryFallbackTransformer2(Config.getTargetPackages()));
         int endTime = (int) System.currentTimeMillis();
-        System.out.println("[LittleObfFallback] Global ASM Transformer injected successfully. Convert time: " + (endTime - startTime) + "ms.");
+        System.out.println("[LittleIntermediaryFallback] Global ASM Transformer injected successfully. Convert time: " + (endTime - startTime) + "ms.");
     }
 
-//        System.out.println("[LittleObfFallback] PreLaunch: Adding ClassTinkerers transformation");
+//        System.out.println("[LittleIntermediaryFallback] PreLaunch: Adding ClassTinkerers transformation");
 //
 //        MappingRegistry.CLASS_MAP.forEach((from, to) -> {
 //            ClassNode node = new ClassNode();
@@ -92,8 +92,8 @@ public class LittleObfFallbackPreLaunch implements PreLaunchEntrypoint {
 //            ClassTinkerers.define(from.replace('/', '.'), writer.toByteArray());
 //        });
 //
-//        ClassTinkerers.addTransformation("", new LittleObfFallbackTransformer());
-//        System.out.println("[LittleObfFallback] PreLaunch: ClassTinkerers transformation added successfully");
+//        ClassTinkerers.addTransformation("", new LittleIntermediaryFallbackTransformer());
+//        System.out.println("[LittleIntermediaryFallback] PreLaunch: ClassTinkerers transformation added successfully");
 //    }
 //
 //    public static int getReturnOpcode(String desc) {

@@ -1,18 +1,18 @@
-package net.pitan76.littleobffallback.asm;
+package net.pitan76.littleintermediaryfallback.asm;
 
 import org.objectweb.asm.commons.ClassRemapper;
 import org.objectweb.asm.tree.ClassNode;
 
 import java.util.function.Consumer;
 
-public class LittleObfFallbackTransformer implements Consumer<ClassNode> {
+public class LittleIntermediaryFallbackTransformer implements Consumer<ClassNode> {
 
     @Override
     public void accept(ClassNode node) {
         String name = node.name;
         if (name.startsWith("java/") || name.startsWith("sun/") ||
                 name.startsWith("jdk/") || name.startsWith("org/objectweb/asm/") ||
-                name.startsWith("net/minecraft/") || name.startsWith("net/pitan76/littleobffallback/") ||
+                name.startsWith("net/minecraft/") || name.startsWith("net/pitan76/littleintermediaryfallback/") ||
                 name.startsWith("com/google/") || name.startsWith("org/apache/") ||
                 name.startsWith("org/spongepowered/") || name.startsWith("org/slf4j/") ||
                 name.startsWith("org/log4j/") || name.startsWith("org/jetbrains/") ||
@@ -23,7 +23,7 @@ public class LittleObfFallbackTransformer implements Consumer<ClassNode> {
         }
 
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        LittleObfFallbackRemapper remapper = new LittleObfFallbackRemapper(loader);
+        LittleIntermediaryFallbackRemapper remapper = new LittleIntermediaryFallbackRemapper(loader);
 
         ClassNode remapped = new ClassNode();
         ClassRemapper classRemapper = new ClassRemapper(remapped, remapper);

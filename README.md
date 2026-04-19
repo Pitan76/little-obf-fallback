@@ -5,7 +5,7 @@ This is an obfuscation compatibility layer that implements a fallback for obfusc
 It is only for mods that are based on MCPitanLib, but you can make it available for external mods with Config.
 MCPitanLibを前提としているmodのみ対象ですが、Configで外部modも対象にすることができます。
 
-## Config (config/littleobffallback.json)
+## Config (config/littleintermediaryfallback.json)
 ```json
 {
   "modsHash": "42b60aa2",

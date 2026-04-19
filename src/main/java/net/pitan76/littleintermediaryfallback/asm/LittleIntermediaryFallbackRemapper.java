@@ -1,11 +1,10 @@
-package net.pitan76.littleobffallback.asm;
+package net.pitan76.littleintermediaryfallback.asm;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.Remapper;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,12 +12,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class LittleObfFallbackRemapper extends Remapper {
+public class LittleIntermediaryFallbackRemapper extends Remapper {
 
     public boolean isChanged = false;
     private final ClassLoader loader;
 
-    public LittleObfFallbackRemapper(ClassLoader loader) {
+    public LittleIntermediaryFallbackRemapper(ClassLoader loader) {
         super(Opcodes.ASM9);
         this.loader = loader;
     }

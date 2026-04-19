@@ -1,4 +1,4 @@
-package net.pitan76.littleobffallback;
+package net.pitan76.littleintermediaryfallback;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,13 +14,22 @@ import java.util.*;
 
 public class Config {
     private static final File configDir = FabricLoader.getInstance().getConfigDir().toFile();
-    private static final File file = new File(configDir, "littleobffallback.json");
+    private static final File oldFile = new File(configDir, "littleobffallback.json");
+    private static final File file = new File(configDir, "littleintermediaryfallback.json");
 
     private static Map<String, Object> map = new HashMap<>();
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public static void init() {
+        if (oldFile.exists()) {
+            if (oldFile.renameTo(file)) {
+                System.out.println("[LittleIntermediaryFallback] Renamed old config file to new one.");
+            } else {
+                System.out.println("[LittleIntermediaryFallback] Failed to rename old config file. Please check your config directory.");
+            }
+        }
+
         if (!file.exists()) {
             // Default values
             map.put("enabled", true);
@@ -68,7 +77,7 @@ public class Config {
                 .filter(mod -> mod.getMetadata().getDependencies().stream().anyMatch(
                         depend -> depend.getModId().equals("mcpitanlib"))).toList();
 
-        targetMods.forEach(container -> System.out.println("[LittleObfFallback] Detected mod: " + container.getMetadata().getId()));
+        targetMods.forEach(container -> System.out.println("[LittleIntermediaryFallback] Detected mod: " + container.getMetadata().getId()));
 
         List<EntrypointContainer<Object>> entries =
                 FabricLoader.getInstance().getEntrypointContainers("main", Object.class);
@@ -86,7 +95,7 @@ public class Config {
                         packageName = packageName.substring(0, packageName.lastIndexOf('/'));
                     }
 
-//                    System.out.printf("[LittleObfFallback] Target mod: %s, Entry point class: %s%n", mod.getMetadata().getId(), packageName);
+//                    System.out.printf("[LittleIntermediaryFallback] Target mod: %s, Entry point class: %s%n", mod.getMetadata().getId(), packageName);
                     return packageName + "/";
                 }
             }
@@ -100,7 +109,7 @@ public class Config {
     }
 
     public static void load() {
-        // Load littleobffallback.json
+        // Load littleintermediaryfallback.json
         if (!file.exists()) return;
 
         try (var reader = new FileReader(file)) {
@@ -111,7 +120,7 @@ public class Config {
     }
 
     public static void save() {
-        // Save littleobffallback.json
+        // Save littleintermediaryfallback.json
         try {
             String json = gson.toJson(map);
             if (configDir.exists() || configDir.mkdirs())

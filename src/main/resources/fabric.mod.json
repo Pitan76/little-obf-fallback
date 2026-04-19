@@ -1,28 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "littleobffallback",
+  "id": "littleintermediaryfallback",
   "version": "${version}",
-  "name": "LittleObfFallback",
+  "name": "littleintermediaryfallback",
   "description": "An obfuscation fallback layer",
   "authors": [
     "Pitan"
   ],
   "contact": {
-    "issues": "https://github.com/Pitan76/little-obf-fallback/issues",
-    "sources": "https://github.com/Pitan76/little-obf-fallback"
+    "issues": "https://github.com/Pitan76/little-intermediary-fallback/issues",
+    "sources": "https://github.com/Pitan76/little-intermediary-fallback"
   },
   "license": "MIT",
-  "icon": "assets/littleobffallback/icon.png",
+  "icon": "assets/littleintermediaryfallback/icon.png",
   "environment": "*",
   "entrypoints": {
     "preLaunch": [
-      "net.pitan76.littleobffallback.LittleObfFallbackPreLaunch"
+      "net.pitan76.littleintermediaryfallback.littleintermediaryfallbackPreLaunch"
     ],
     "main": [
-      "net.pitan76.littleobffallback.LittleObfFallback"
+      "net.pitan76.littleintermediaryfallback.littleintermediaryfallback"
     ]
   },
-  "accessWidener": "littleobffallback.accesswidener",
+  "accessWidener": "littleintermediaryfallback.accesswidener",
   "depends": {
     "fabricloader": "*",
     "minecraft": "*"
